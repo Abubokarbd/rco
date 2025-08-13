@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>কুরআনের আয়াতসমূহ</title>
+  <style>
+    /* Font Imports from GitHub */
+    @font-face {
+      font-family: 'SolaimanLipi';
+      src: url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.ttf') format('truetype');
+      font-display: swap;
+    }
+    
+    @font-face {
+      font-family: 'Al_Majeed_Quranic';
+      src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
+      font-display: swap;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'SolaimanLipi', sans-serif;
+      background-color: #f8f5f0;
+      color: #333;
+      line-height: 1.6;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-bottom: 60px;
+    }
+    
+    .verse-container {
+      margin-bottom: 30px;
+      padding: 15px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .verse-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 10px;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 5px;
+    }
+    
+    .arabic-verse {
+      font-family: 'Al_Majeed_Quranic', serif;
+      font-size: 15px;
+      text-align: right;
+      direction: rtl;
+      line-height: 2;
+      margin: 15px 0;
+      color: #1a3e72;
+      transition: font-size 0.3s ease;
+    }
+    
+    .translation {
+      font-size: 12px;
+      margin: 10px 0;
+      text-align: justify;
+    }
+    
+    .reference {
+      font-size: 11px;
+      color: #7f8c8d;
+      text-align: right;
+      font-style: italic;
+      margin-top: 10px;
+    }
+    
+    .zoom-controls {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: white;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+    }
+    
+    .zoom-btn {
+      background: #2c3e50;
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .zoom-btn:hover {
+      background: #1a3e72;
+    }
+    
+    .zoom-reset {
+      background: #7f8c8d;
+    }
+    
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+      
+      .verse-container {
+        padding: 10px;
+      }
+      
+      .arabic-verse {
+        font-size: 14px;
+        line-height: 1.8;
+      }
+      
+      .translation {
+        font-size: 11px;
+      }
+      
+      .zoom-controls {
+        bottom: 5px;
+        right: 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Previous verses here... -->
+
+  <div class="verse-container">
+    <div class="verse-title">১। আসমান ও জমিনের রাজত্ব আল্লাহর</div>
+    <div class="arabic-verse">وَاَقِیۡمُوا الصَّلٰوۃَ وَاٰتُوا الزَّکٰوۃَ ؕ وَمَا تُقَدِّمُوۡا لِاَنۡفُسِکُمۡ مِّنۡ خَیۡرٍ تَجِدُوۡہُ عِنۡدَ اللّٰہِ ؕ اِنَّ اللّٰہَ بِمَا تَعۡمَلُوۡنَ بَصِیۡرٌ</div>
+    <div class="translation">এবং সালাত কায়েম কর ও যাকাত আদায় কর এবং (স্মরণ রেখ), তোমরা যে-কোনও সৎকর্ম নিজেদের কল্যাণার্থে সম্মুখে প্রেরণ করবে, আল্লাহর কাছে তা পাবে। নিশ্চয়ই তোমরা যে-কোনও কাজ কর আল্লাহ তা দেখছেন।</div>
+    <div class="reference">(আল বাকারা ২:১১০)</div>
+  </div>
+  
+  <div class="verse-container">
+    <div class="verse-title">২। সৎকর্মশীলদের কোন ভয় নাই</div>
+    <div class="arabic-verse">بَلٰی ٭  مَنۡ اَسۡلَمَ وَجۡہَہٗ لِلّٰہِ وَہُوَ مُحۡسِنٌ فَلَہٗۤ اَجۡرُہٗ عِنۡدَ رَبِّہٖ ۪  وَلَا خَوۡفٌ عَلَیۡہِمۡ وَلَا ہُمۡ یَحۡزَنُوۡنَ</div>
+    <div class="translation">কেন নয়? (নিয়ম তো এই যে,) যে ব্যক্তিই নিজ চেহারা আল্লাহর সামনে নত করবে এবং সে সৎকর্মশীলও হবে, সে নিজ প্রতিপালকের কাছে তার প্রতিদান পাবে। আর এরূপ লোকদের কোনও ভয় থাকবে না এবং তারা দুঃখিতও হবে না।</div>
+    <div class="reference">(আল বাকারা ২:১১২)</div>
+  </div>
+  
+  <div class="verse-container">
+    <div class="verse-title">৩। পূর্ব ও পশ্চিম সব আল্লাহরই</div>
+    <div class="arabic-verse">وَلِلّٰہِ الۡمَشۡرِقُ وَالۡمَغۡرِبُ ٭ فَاَیۡنَمَا تُوَلُّوۡا فَثَمَّ وَجۡہُ اللّٰہِ ؕ اِنَّ اللّٰہَ وَاسِعٌ عَلِیۡمٌ</div>
+    <div class="translation">পূর্ব ও পশ্চিম সব আল্লাহরই। সুতরাং তোমরা যে দিকেই মুখ ফেরাবে সেটা আল্লাহরই দিক। নিশ্চয়ই আল্লাহ সর্বব্যাপী ও সর্বজ্ঞ।</div>
+    <div class="reference">(আল বাকারা ২:১১৫)</div>
+  </div>
+  
+  <div class="verse-container">
+    <div class="verse-title">৪। আসমানসমূহ ও যমীনের অস্তিত্বদাতা</div>
+    <div class="arabic-verse">بَدِیۡعُ السَّمٰوٰتِ وَالۡاَرۡضِ ؕ وَاِذَا قَضٰۤی اَمۡرًا فَاِنَّمَا یَقُوۡلُ لَہٗ کُنۡ فَیَکُوۡنُ</div>
+    <div class="translation">তিনি আসমানসমূহ ও যমীনের অস্তিত্বদাতা। তিনি যখন কোনও বিষয়ের ফায়সালা করেন তখন কেবল এতটুকু বলেন যে,হয়ে যাও, অমনি তা হয়ে যায়।</div>
+    <div class="reference">(আল বাকারা ২:১১৭)</div>
+  </div>
+  
+  <div class="verse-container">
+    <div class="verse-title">৫। আসমানসমূহ ও যমীনের অস্তিত্বদাতা</div>
+    <div class="arabic-verse">اِنَّاۤ اَرۡسَلۡنٰکَ بِالۡحَقِّ بَشِیۡرًا وَّنَذِیۡرًا ۙ وَّلَا تُسۡئَلُ عَنۡ اَصۡحٰبِ الۡجَحِیۡمِ</div>
+    <div class="translation">(হে নবী!) নিশ্চয়ই আমি তোমাকে সত্যসহ এভাবে প্রেরণ করেছি যে, তুমি (জান্নাতের) সুসংবাদ দেবে এবং (জাহান্নাম সম্পর্কে) ভীতি প্রদর্শন করবে। যেসব লোক (স্বেচ্ছায়) জাহান্নাম (এর পথ) বেছে নিয়েছে, তাদের সম্পর্কে তোমাকে জিজ্ঞাসাবাদ করা হবে না।</div>
+    <div class="reference">(আল বাকারা ২:১১৯)</div>
+  </div>
+
+  <div class="zoom-controls">
+    <button class="zoom-btn" id="zoomOut">-</button>
+    <button class="zoom-btn zoom-reset" id="zoomReset">↻</button>
+    <button class="zoom-btn" id="zoomIn">+</button>
+  </div>
+
+  <script>
+    // Arabic text zoom functionality with localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+      const arabicVerses = document.querySelectorAll('.arabic-verse');
+      const zoomInBtn = document.getElementById('zoomIn');
+      const zoomOutBtn = document.getElementById('zoomOut');
+      const zoomResetBtn = document.getElementById('zoomReset');
+      
+      // Load saved zoom level or set default
+      let currentZoom = localStorage.getItem('arabicTextZoom') || 1;
+      applyZoom(currentZoom);
+      
+      // Zoom in function
+      zoomInBtn.addEventListener('click', function() {
+        currentZoom = Math.min(parseFloat(currentZoom) + 0.1, 2.0);
+        applyZoom(currentZoom);
+        saveZoom();
+      });
+      
+      // Zoom out function
+      zoomOutBtn.addEventListener('click', function() {
+        currentZoom = Math.max(parseFloat(currentZoom) - 0.1, 0.7);
+        applyZoom(currentZoom);
+        saveZoom();
+      });
+      
+      // Reset zoom function
+      zoomResetBtn.addEventListener('click', function() {
+        currentZoom = 1;
+        applyZoom(currentZoom);
+        saveZoom();
+      });
+      
+      // Apply zoom to all Arabic text
+      function applyZoom(zoomLevel) {
+        const baseSize = 15;
+        arabicVerses.forEach(verse => {
+          verse.style.fontSize = (baseSize * zoomLevel) + 'px';
+        });
+      }
+      
+      // Save zoom level to localStorage
+      function saveZoom() {
+        localStorage.setItem('arabicTextZoom', currentZoom);
+      }
+    });
+  </script>
+</body>
+</html>
