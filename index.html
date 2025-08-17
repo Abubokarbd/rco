@@ -2,20 +2,13 @@
 <html lang="bn">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>RCOzone</title>
-  <style>
-    /* SolaimanLipi font from internet with multiple formats */
-    @font-face {
-      font-family: 'SolaimanLipi';
-      src: url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.woff2') format('woff2'),
-           url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.woff') format('woff'),
-           url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
-    }
 
+  <!-- SolaimanLipi external font -->
+  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
+
+  <style>
     /* Apply font globally */
     * {
       margin: 0;
@@ -25,7 +18,7 @@
     }
 
     body {
-      background: url('https://abubokarbd.github.io/rco/img/bac.png') no-repeat center center fixed;
+      background-color: #033E3E;
       background-size: cover;
       color: #fff;
       max-width: 600px;
@@ -47,8 +40,8 @@
     }
 
     /* Anchor tag styling for correct font */
-    a, a:visited, a:hover, a:active {
-      font-family: 'SolaimanLipi', sans-serif !important;
+    a, a:visited, a:hover, a:active, button, .app-button {
+      font-family: inherit !important;
       text-decoration: none;
       color: inherit;
     }
@@ -122,9 +115,21 @@
       border-radius: 5px;
     }
 
+    @media (max-width: 500px) {
+      .app-button {
+        flex: 0 0 48%; /* মোবাইলেও দুই বাটন পাশাপাশি */
+        font-size: 13px;
+        height: 50px;
+      }
+
+      .header h1 {
+        font-size: 20px;
+      }
+    }
+
     @media (max-width: 400px) {
       .app-button {
-        flex: 0 0 100%; /* ছোট স্ক্রিনে এক কলাম */
+        flex: 0 0 100%; /* খুব ছোট স্ক্রিনে এক কলাম */
       }
     }
   </style>
