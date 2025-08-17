@@ -85,25 +85,26 @@
       background-color: rgba(0,0,0,0.8);
     }
 
-    .modal-content {
-      background-color: #fefefe;
-      margin: 10% auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 600px;
-      height: 70%;
-      position: relative;
-    }
+ .modal-content {
+  background-color: #fefefe;
+  margin: 5% auto;       /* উপরের margin কমিয়ে নিচের দিকে লম্বা করার জন্য */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 600px;
+  height: 85%;           /* আগের 70% থেকে বাড়িয়ে 85% করা */
+  position: relative;
+}
 
     .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #000; /* কালো রঙে পরিবর্তন */
+}
 
     iframe {
       width: 100%;
@@ -143,7 +144,7 @@
     <a href="https://abubokarbd.github.io/rco/verse2.html" class="app-button">আয়াত-৩</a>
     <a href="https://abubokarbd.github.io/rco/verse3.html" class="app-button">আয়াত-৪</a>
     <a href="https://abubokarbd.github.io/rco/doc.html" class="app-button">ডকুমেন্ট</a>
-    <button id="devButton" class="app-button">Developer</button>
+    <button id="devButton" class="app-button">Contact</button> 
   </div>
 
   <div id="devModal" class="modal">
