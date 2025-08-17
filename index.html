@@ -5,16 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RCOzone</title>
   <style>
+    /* SolaimanLipi font from internet with multiple formats */
     @font-face {
       font-family: 'SolaimanLipi';
-      src: url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.ttf') format('truetype');
+      src: url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.woff2') format('woff2'),
+           url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.woff') format('woff'),
+           url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
     }
 
+    /* Apply font globally */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'SolaimanLipi', sans-serif;
+      font-family: 'SolaimanLipi', sans-serif !important;
     }
 
     body {
@@ -39,28 +46,24 @@
       font-size: 24px;
     }
 
-    .back-button {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background-color: #ffffffaa;
-      color: #333;
-      border: none;
-      padding: 6px 10px;
-      border-radius: 5px;
-      font-size: 14px;
-      cursor: pointer;
-      z-index: 999;
+    /* Anchor tag styling for correct font */
+    a, a:visited, a:hover, a:active {
+      font-family: 'SolaimanLipi', sans-serif !important;
+      text-decoration: none;
+      color: inherit;
     }
 
+    /* Button grid - Flexbox */
     .button-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 10px;
       margin-bottom: 20px;
     }
 
     .app-button {
+      flex: 0 0 48%; /* দুইটি বাটন এক লাইনে ফিট হবে */
       background-color: #2196F3;
       color: white;
       border: none;
@@ -70,7 +73,6 @@
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       transition: all 0.3s;
-      text-decoration: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -120,24 +122,14 @@
       border-radius: 5px;
     }
 
-    @media (max-width: 500px) {
-      .button-grid {
-        grid-template-columns: 1fr;
-      }
-
+    @media (max-width: 400px) {
       .app-button {
-        height: 50px;
-        font-size: 13px;
-      }
-
-      .header h1 {
-        font-size: 20px;
+        flex: 0 0 100%; /* ছোট স্ক্রিনে এক কলাম */
       }
     }
   </style>
 </head>
 <body>
-  <button class="back-button" onclick="history.back()">← ফিরে যাও</button>
 
   <div class="header">
     <h1>RCOzone</h1>
