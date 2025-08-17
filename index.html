@@ -19,7 +19,6 @@
 
     body {
       background-color: #033E3E;
-      background-size: cover;
       color: #fff;
       max-width: 600px;
       margin: 0 auto;
@@ -36,40 +35,38 @@
     }
 
     .header h1 {
-      font-size: 24px;
+      font-size: 48px; /* ডাবল ফন্ট সাইজ */
     }
 
-    /* Anchor tag styling for correct font */
     a, a:visited, a:hover, a:active, button, .app-button {
       font-family: inherit !important;
       text-decoration: none;
       color: inherit;
     }
 
-    /* Button grid - Flexbox */
     .button-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
+      justify-content: space-between; /* দুই বাটন পাশে পাশে রাখবে */
       gap: 10px;
       margin-bottom: 20px;
     }
 
     .app-button {
-      flex: 0 0 48%; /* দুইটি বাটন এক লাইনে ফিট হবে */
+      flex: 0 0 48%; /* দুইটি বাটন এক লাইনে */
       background-color: #2196F3;
       color: white;
       border: none;
-      padding: 10px;
+      padding: 15px;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 28px; /* ডাবল ফন্ট সাইজ */
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       transition: all 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 55px;
+      height: 80px; /* বাটন উঁচু করা ফন্ট অনুযায়ী */
     }
 
     .app-button:hover {
@@ -118,18 +115,18 @@
     @media (max-width: 500px) {
       .app-button {
         flex: 0 0 48%; /* মোবাইলেও দুই বাটন পাশাপাশি */
-        font-size: 13px;
-        height: 50px;
+        font-size: 28px;
+        height: 70px;
       }
 
       .header h1 {
-        font-size: 20px;
+        font-size: 40px; /* ডাবল ফন্ট */
       }
     }
 
     @media (max-width: 400px) {
       .app-button {
-        flex: 0 0 100%; /* খুব ছোট স্ক্রিনে এক কলাম */
+        flex: 0 0 48%; /* এক লাইনে দুই বাটন থাকবে, খুব ছোট স্ক্রিনেও */
       }
     }
   </style>
