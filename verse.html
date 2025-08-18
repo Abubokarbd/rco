@@ -1,147 +1,347 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>আয়াত তালিকা -১</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আয়াত তালিকা -১</title>
 
-  <!-- বাংলা ফন্ট -->
-  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
+<!-- বাংলা ফন্ট -->
+<link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
 
-  <style>
-    /* আরবি ফন্ট লোড */
-    @font-face {
-      font-family: 'Al_Majeed_Quranic';
-      src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
-      font-display: swap;
-    }
+<style>
+/* আরবি ফন্ট লোড */
+@font-face {
+  font-family: 'Al_Majeed_Quranic';
+  src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
+  font-display: swap;
+}
 
-    body {
-      font-family: 'SolaimanLipi', sans-serif;
-      background-color: #033E3E; /* ডার্ক ব্যাকগ্রাউন্ড */
-      color: #FFFFFF; /* সাদা ফন্ট কালার */
-      line-height: 1.6;
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      padding-bottom: 60px;
-      font-size: 32px;
-    }
+body {
+  font-family: 'SolaimanLipi', sans-serif;
+  background-color: #033E3E;
+  color: #FFFFFF;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 24px;
+}
 
-    .verse-container {
-      margin-bottom: 40px;
-      padding: 20px;
-      background-color: #033E3E; /* একই ব্যাকগ্রাউন্ড */
-      border-radius: 10px;
-    }
+.verse-container {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.05); /* হালকা পার্থক্য */
+}
 
-    .verse-title {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 15px;
-      color: #FFFFFF;
-    }
+.verse-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
 
-    .arabic-verse {
-      font-family: 'Al_Majeed_Quranic', serif;
-      font-size: 30px;
-      text-align: right;
-      direction: rtl;
-      line-height: 2;
-      margin: 15px 0;
-      transition: font-size 0.3s ease;
-      color: #FFFFFF;
-    }
+.arabic-verse {
+  font-family: 'Al_Majeed_Quranic', serif;
+  font-size: 30px;
+  text-align: right;
+  direction: rtl;
+  line-height: 2;
+  margin: 15px 0;
+  transition: font-size 0.3s ease;
+}
 
-    .translation {
-      font-size: 24px;
-      margin: 10px 0;
-      text-align: justify;
-      transition: font-size 0.3s ease;
-      color: #FFFFFF;
-    }
+.translation {
+  font-size: 22px;
+  margin: 10px 0;
+  text-align: justify;
+  transition: font-size 0.3s ease;
+}
 
-    .reference {
-      font-size: 22px;
-      text-align: right;
-      font-style: italic;
-      margin-top: 10px;
-      color: #FFFFFF;
-    }
+.reference {
+  font-size: 20px;
+  text-align: right;
+  font-style: italic;
+  margin-top: 10px;
+}
 
-    /* Zoom controls */
-    .zoom-controls {
-      position: fixed;
-      bottom: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 1000;
-    }
+/* Zoom controls */
+.zoom-controls {
+  position: fixed;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
 
-    .zoom-arabic {
-      right: 20px;
-    }
+.zoom-arabic {
+  right: 20px;
+}
 
-    .zoom-bangla {
-      left: 20px;
-    }
+.zoom-bangla {
+  left: 20px;
+}
 
-    .zoom-controls button {
-      background: #555; /* ডার্ক বাটন */
-      color: #FFFFFF;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 14px;
-      cursor: pointer;
-      font-size: 20px;
-      transition: background 0.2s;
-    }
+.zoom-controls button {
+  background: #555;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.2s;
+}
 
-    .zoom-controls button:hover {
-      background: #777;
-    }
-  </style>
+.zoom-controls button:hover {
+  background: #777;
+}
+</style>
 </head>
 <body>
 
-  <div class="verse-container">
-    <div class="verse-title">১। আল্লাহর নিকট ফিরে যেতে হবে</div>
-    <div class="arabic-verse" id="arabicVerse">
-      کَیۡفَ تَکۡفُرُوۡنَ بِاللّٰہِ وَکُنۡتُمۡ اَمۡوَاتًا فَاَحۡیَاکُمۡ ۚ ثُمَّ یُمِیۡتُکُمۡ ثُمَّ یُحۡیِیۡکُمۡ ثُمَّ اِلَیۡہِ تُرۡجَعُوۡنَ
-    </div>
-    <div class="translation" id="banglaTranslation">
-      তোমরা আল্লাহর সাথে কুফরী কর্মপন্থা কিভাবে অবলম্বন কর, অথচ তোমরা ছিলে নিষ্প্রাণ, অতঃপর তিনিই তোমাদেরকে জীবন দান করেছেন। অতঃপর তিনিই তোমাদের মৃত্যু ঘটাবেন, অতঃপর তিনি (পুনরায়) তোমাদেরকে জীবিত করবেন, তারপর তোমরা তাঁরই কাছে ফিরে যাবে।
-    </div>
-    <div class="reference">[আল বাকারা ২:২৮]</div>
-  </div>
+<!-- আয়াত তালিকা শুরু -->
 
-  <!-- Arabic Zoom Controls -->
-  <div class="zoom-controls zoom-arabic">
-    <button onclick="zoomIn('arabicVerse')">＋</button>
-    <button onclick="zoomOut('arabicVerse')">－</button>
-  </div>
+<div class="verse-container">
+  <div class="verse-title">১। আল্লাহর নিকট ফিরে যেতে হবে</div>
+  <div class="arabic-verse">کَیۡفَ تَکۡفُرُوۡنَ بِاللّٰہِ وَکُنۡتُمۡ اَمۡوَاتًا فَاَحۡیَاکُمۡ ۚ ثُمَّ یُمِیۡتُکُمۡ ثُمَّ یُحۡیِیۡکُمۡ ثُمَّ اِلَیۡہِ تُرۡجَعُوۡنَ</div>
+  <div class="translation">তোমরা আল্লাহর সাথে কুফরী কর্মপন্থা কিভাবে অবলম্বন কর, অথচ তোমরা ছিলে নিষ্প্রাণ, অতঃপর তিনিই তোমাদেরকে জীবন দান করেছেন। অতঃপর তিনিই তোমাদের মৃত্যু ঘটাবেন, অতঃপর তিনি (পুনরায়) তোমাদেরকে জীবিত করবেন, তারপর তোমরা তাঁরই কাছে ফিরে যাবে।</div>
+  <div class="reference">[আল বাকারা ২:২৮]</div>
+</div>
 
-  <!-- Bangla Zoom Controls -->
-  <div class="zoom-controls zoom-bangla">
-    <button onclick="zoomIn('banglaTranslation')">＋</button>
-    <button onclick="zoomOut('banglaTranslation')">－</button>
-  </div>
+<div class="verse-container">
+  <div class="verse-title">২। কুফুরীতে লিপ্ত হওয়ার পরিণাম</div>
+  <div class="arabic-verse">وَالَّذِیۡنَ کَفَرُوۡا وَکَذَّبُوۡا بِاٰیٰتِنَاۤ اُولٰٓئِکَ اَصۡحٰبُ النَّارِ ۚ  ہُمۡ فِیۡہَا خٰلِدُوۡنَ</div>
+  <div class="translation">আর যারা কুফরীতে লিপ্ত হবে এবং আমার আয়াতসমূহ প্রত্যাখ্যান করবে, তারা জাহান্নামবাসী। তারা সেখানে সর্বদা থাকবে।</div>
+  <div class="reference">[আল বাকারা ২:৩৯]</div>
+</div>
 
-  <script>
-    function zoomIn(id) {
-      const el = document.getElementById(id);
-      let style = window.getComputedStyle(el, null).getPropertyValue('font-size');
-      let currentSize = parseFloat(style);
-      el.style.fontSize = (currentSize + 2) + 'px';
-    }
+<div class="verse-container">
+  <div class="verse-title">৩। সত্য মিথ্যার মিশ্রণ করো না</div>
+  <div class="arabic-verse">وَلَا تَلۡبِسُوا الۡحَقَّ بِالۡبَاطِلِ وَتَکۡتُمُوا الۡحَقَّ وَاَنۡتُمۡ تَعۡلَمُوۡنَ</div>
+  <div class="translation">এবং সত্যকে মিথ্যার সাথে মিশ্রিত করো না এবং সত্যকে গোপনও করো না, যখন (প্রকৃত অবস্থা) তোমরা ভালোভাবে জান।</div>
+  <div class="reference">[আল বাকারা ২:৪২]</div>
+</div>
 
-    function zoomOut(id) {
-      const el = document.getElementById(id);
-      let style = window.getComputedStyle(el, null).getPropertyValue('font-size');
-      let currentSize = parseFloat(style);
-      el.style.fontSize = (currentSize - 2) + 'px';
-    }
-  </script>
+<div class="verse-container">
+  <div class="verse-title">৪। সালাত কায়েমের নির্দেশ</div>
+  <div class="arabic-verse">وَاَقِیۡمُوا الصَّلٰوۃَ وَاٰتُوا الزَّکٰوۃَ وَارۡکَعُوۡا مَعَ الرّٰکِعِیۡنَ</div>
+  <div class="translation">এবং তোমরা সালাত কায়েম কর, যাকাত আদায় কর ও রুকূকারীদের সাথে রুকূ কর।</div>
+  <div class="reference">[আল বাকারা ২:৪৩]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৫। সালাত মাধ্যমে সাহায্য লাভ</div>
+  <div class="arabic-verse">وَاسۡتَعِیۡنُوۡا بِالصَّبۡرِ وَالصَّلٰوۃِ ؕ  وَاِنَّہَا لَکَبِیۡرَۃٌ اِلَّا عَلَی الۡخٰشِعِیۡنَ </div>
+  <div class="translation">এবং সবর ও সালাতের মাধ্যমে সাহায্য লাভ কর। সালাতকে অবশ্যই কঠিন মনে হয়, কিন্তু তাদের পক্ষে (কঠিন) নয়, যারা খুশূ (অর্থাৎ ধ্যান ও বিনয়) এর সাথে পড়ে।</div>
+  <div class="reference">[আল বাকারা ২:৪৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৬। বিচার দিবসকে ভয় করার আদেশ</div>
+  <div class="arabic-verse">وَاتَّقُوۡا یَوۡمًا لَّا تَجۡزِیۡ نَفۡسٌ عَنۡ نَّفۡسٍ شَیۡئًا وَّلَا یُقۡبَلُ مِنۡہَا شَفَاعَۃٌ وَّلَا یُؤۡخَذُ مِنۡہَا عَدۡلٌ وَّلَا ہُمۡ یُنۡصَرُوۡنَ</div>
+  <div class="translation">এবং সেই দিনকে ভয় কর, যে দিন কোনও ব্যক্তি কারও কোনও কাজে আসবে না, কারও পক্ষ হতে কোনও সুপারিশ গৃহীত হবে না, কারও থেকে কোনও রকম মুক্তিপণ গ্রহণ করা হবে না এবং তাদের কোনও রকম সাহায্যও করা হবে না।</div>
+  <div class="reference">[আল বাকারা ২:৪৮]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৭। ঈমানদারদের পুরস্কার</div>
+  <div class="arabic-verse">وَالَّذِیۡنَ اٰمَنُوۡا وَعَمِلُوا الصّٰلِحٰتِ اُولٰٓئِکَ اَصۡحٰبُ الۡجَنَّۃِ ۚ  ہُمۡ فِیۡہَا خٰلِدُوۡنَ</div>
+  <div class="translation">যেসব লোক ঈমান আনে ও সৎকর্ম করে, তারা জান্নাতবাসী। তারা সর্বদা সেখানে থাকবে।</div>
+  <div class="reference">[আল বাকারা ২:৮২]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৮। কিতাবকে সুবিধামত বিশ্বাস করার পরিণতি</div>
+  <div class="arabic-verse">اَفَتُؤۡمِنُوۡنَ بِبَعۡضِ الۡکِتٰبِ وَتَکۡفُرُوۡنَ بِبَعۡضٍ ۚ فَمَا جَزَآءُ مَنۡ یَّفۡعَلُ ذٰلِکَ مِنۡکُمۡ اِلا خِزۡیٌ فِی الۡحَیٰوۃِ الدُّنۡیَا ۚ وَیَوۡمَ الۡقِیٰمۃِ یُرَدُّوۡنَ اِلٰۤی اَشَدِّ الۡعَذَابِ</div>
+  <div class="translation">তবে কি তোমরা কিতাবের (অর্থাৎ তাওরাতের) কিছু অংশে ঈমান রাখ এবং কিছু অংশ অস্বীকার কর? তাহলে বল, তোমাদের মধ্যে যারা এরূপ করে তাদের শাস্তি এ ছাড়া আর কী হতে পারে যে, পার্থিব জীবনে তাদের জন্য থাকবে লাঞ্ছনা আর কিয়ামতের দিন তাদেরকে নিয়ে যাওয়া হবে কঠিনতর আযাবের দিকে?</div>
+  <div class="reference">[আল বাকারা ২:৮৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৯। অবাধ্যরাই আল্লাহর আয়াতের অস্বীকার করে</div>
+  <div class="arabic-verse">وَلَقَدۡ اَنۡزَلۡنَاۤ اِلَیۡکَ اٰیٰتٍۭ بَیِّنٰتٍ ۚ وَمَا یَکۡفُرُ بِہَاۤ اِلَّا الۡفٰسِقُوۡنَ</div>
+  <div class="translation">নিশ্চয়ই আমি আপনার প্রতি এমন সব আয়াত নাযিল করেছি, যা সত্যকে পরিস্ফুটকারী, আর সেগুলোকে অস্বীকার করে কেবল অবাধ্যরাই।</div>
+  <div class="reference">[আল বাকারা ২:৯৯]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১০। বিশ্বব্রহ্মাণ্ডের স্রষ্টা একমাত্র আল্লাহ তাআলা</div>
+  <div class="arabic-verse">اَلَمۡ تَعۡلَمۡ اَنَّ اللّٰہَ لَہٗ مُلۡکُ السَّمٰوٰتِ وَالۡاَرۡضِ ؕ وَمَا لَکُمۡ مِّنۡ دُوۡنِ اللّٰہِ مِنۡ وَّلِیٍّ وَّلَا نَصِیۡرٍ</div>
+  <div class="translation">তুমি কি জান না আল্লাহ তাআলা এমন সত্তা যে, আকাশমণ্ডল ও পৃথিবীর সার্বভৌমত্ব কেবল তাঁরই এবং আল্লাহ ছাড়া তোমাদের কোনও অভিভাবক নেই এবং সাহায্যকারীও নেই?</div>
+  <div class="reference">[আল বাকারা ২:১০৭]</div>
+</div>
+<div class="verse-container">
+  <div class="verse-title">১১। সালাত কায়েমের আদেশ</div>
+  <div class="arabic-verse">وَاَقِیۡمُوا الصَّلٰوۃَ وَاٰتُوا الزَّکٰوۃَ ؕ وَمَا تُقَدِّمُوۡا لِاَنۡفُسِکُمۡ مِّنۡ خَیۡرٍ تَجِدُوۡہُ عِنۡدَ اللّٰہِ ؕ اِنَّ اللّٰہَ بِمَا تَعۡمَلُوۡنَ بَصِیۡرٌ</div>
+  <div class="translation">এবং সালাত কায়েম কর ও যাকাত আদায় কর এবং (স্মরণ রেখ), তোমরা যে-কোনও সৎকর্ম নিজেদের কল্যাণার্থে সম্মুখে প্রেরণ করবে, আল্লাহর কাছে তা পাবে। নিশ্চয়ই তোমরা যে-কোনও কাজ কর আল্লাহ তা দেখছেন।</div>
+  <div class="reference">[আল বাকারা ২:১১০]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১২। সৎকর্মশীলদের ভয় নাই</div>
+  <div class="arabic-verse">بَلٰی ٭ مَنۡ اَسۡلَمَ وَجۡہَہٗ لِلّٰہِ وَہُوَ مُحۡسِنٌ فَلَہٗۤ اَجۡرُہٗ عِنۡدَ رَبِّہٖ ۪  وَلَا خَوۡفٌ عَلَیۡہِمۡ وَلَا ہُمۡ یَحۡزَنُوۡنَ</div>
+  <div class="translation">যে ব্যক্তিই নিজ চেহারা আল্লাহর সামনে নত করবে এবং সে সৎকর্মশীলও হবে, সে নিজ প্রতিপালকের কাছে তার প্রতিদান পাবে। আর এরূপ লোকদের কোনও ভয় থাকবে না এবং তারা দুঃখিতও হবে না।</div>
+  <div class="reference">[আল বাকারা ২:১১২]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৩। পূর্ব ও পশ্চিম সব আল্লাহরই</div>
+  <div class="arabic-verse">وَلِلّٰہِ الۡمَشۡرِقُ وَالۡمَغۡرِبُ ٭ فَاَیۡنَمَا تُوَلُّوۡا فَثَمَّ وَجۡہُ اللّٰہِ ؕ اِنَّ اللّٰہَ وَاسِعٌ عَلِیۡمٌ</div>
+  <div class="translation">পূর্ব ও পশ্চিম সব আল্লাহরই। সুতরাং তোমরা যে দিকেই মুখ ফেরাবে সেটা আল্লাহরই দিক। নিশ্চয়ই আল্লাহ সর্বব্যাপী ও সর্বজ্ঞ।</div>
+  <div class="reference">[আল বাকারা ২:১১৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৪। কুন ফাইয়াকুন</div>
+  <div class="arabic-verse">بَدِیۡعُ السَّمٰوٰتِ وَالۡاَرۡضِ ؕ وَاِذَا قَضٰۤی اَمۡرًا فَاِنَّمَا یَقُوۡلُ لَہٗ کُنۡ فَیَکُوۡنُ</div>
+  <div class="translation">তিনি আসমানসমূহ ও যমীনের অস্তিত্বদাতা। তিনি যখন কোনও বিষয়ের ফায়সালা করেন তখন কেবল এতটুকু বলেন যে, হয়ে যাও, অমনি তা হয়ে যায়।</div>
+  <div class="reference">[আল বাকারা ২:১১৭]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৫। নবিজীকে সত্য সহ প্রেরণ করা হয়েছে</div>
+  <div class="arabic-verse">اِنَّاۤ اَرۡسَلۡنٰکَ بِالۡحَقِّ بَشِیۡرًا وَّنَذِیۡرًا ۙ وَّلَا تُسۡئَلُ عَنۡ اَصۡحٰبِ الۡجَحِیۡمِ</div>
+  <div class="translation">(হে নবী!) নিশ্চয়ই আমি আপনাকে সত্যসহ এভাবে প্রেরণ করেছি যে, আপনি (জান্নাতের) সুসংবাদ দিবেন এবং (জাহান্নাম সম্পর্কে) ভীতি প্রদর্শন করবেন। যেসব লোক (স্বেচ্ছায়) জাহান্নাম (এর পথ) বেছে নিয়েছে, তাদের সম্পর্কে আপনাকে জিজ্ঞাসাবাদ করা হবে না।</div>
+  <div class="reference">[আল বাকারা ২:১১৯]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৬। বিচারের দিবসকে ভয় করার আদেশ</div>
+  <div class="arabic-verse">وَاتَّقُوۡا یَوۡمًا لَّا تَجۡزِیۡ نَفۡسٌ عَنۡ نَّفۡسٍ شَیۡئًا وَّلَا یُقۡبَلُ مِنۡہَا عَدۡلٌ وَّلَا تَنۡفَعُہَا شَفَاعَۃٌ وَّلَا ہُمۡ یُنۡصَرُوۡنَ</div>
+  <div class="translation">এবং সেই দিনকে ভয় কর, যে-দিন কেউ কারও কোনও কাজে আসবে না, কারও থেকে কোনওরূপ মুক্তিপণ গৃহীত হবে না, কোনও সুপারিশ কারও উপকার করবে না এবং তারা কোনও সাহায্যও লাভ করবে না।</div>
+  <div class="reference">[আল বাকারা ২:১২৩]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৭। সালাতের মাধ্যমে সাহায্য লাভ</div>
+  <div class="arabic-verse">فَاذۡکُرُوۡنِیۡۤ اَذۡکُرۡکُمۡ وَاشۡکُرُوۡا لِیۡ وَلَا تَکۡفُرُوۡنِ - یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوا اسۡتَعِیۡنُوۡا بِالصَّبۡرِ وَالصَّلٰوۃِ ؕ اِنَّ اللّٰہَ مَعَ الصّٰبِرِیۡنَ</div>
+  <div class="translation">সুতরাং তোমরা আমাকে স্মরণ কর, আমি তোমাদেরকে স্মরণ করব আর আমার শুকর আদায় কর, আমার অকৃতজ্ঞতা করো না। হে মুমিনগণ! সবর ও সালাতের মাধ্যমে সাহায্য লাভ কর। নিশ্চয়ই আল্লাহ সবরকারীদের সঙ্গে আছেন।</div>
+  <div class="reference">[আল বাকারা ২:১৫২-১৫৩]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৮। আল্লাহর পথে জীবনদানকারী শহীদরা জীবিত</div>
+  <div class="arabic-verse">وَلَا تَقُوۡلُوۡا لِمَنۡ یُّقۡتَلُ فِیۡ سَبِیۡلِ اللّٰہِ اَمۡوَاتٌ ؕ بَلۡ اَحۡیَآءٌ وَّلٰکِنۡ لَّا تَشۡعُرُوۡنَ</div>
+  <div class="translation">আর যারা আল্লাহর পথে নিহত হয়েছে তাদেরকে মৃত বলো না। প্রকৃতপক্ষে তারা জীবিত, কিন্তু তোমরা (তাদের জীবিত থাকার বিষয়টা) উপলব্ধি করতে পার না।</div>
+  <div class="reference">[আল বাকারা ২:১৫৪]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৯। আল্লাহ নানাভাবে আমাদের পরীক্ষা করেন</div>
+  <div class="arabic-verse">وَلَنَبۡلُوَنَّکُمۡ بِشَیۡءٍ مِّنَ الۡخَوۡفِ وَالۡجُوۡعِ وَنَقۡصٍ مِّنَ الۡاَمۡوَالِ وَالۡاَنۡفُسِ وَالثَّمَرٰتِ ؕ  وَبَشِّرِ الصّٰبِرِیۡنَ ۙ</div>
+  <div class="translation">আর আমি অবশ্যই তোমাদেরকে পরীক্ষা করব (কখনও) কিছুটা ভয়-ভীতি দ্বারা, (কখনও) ক্ষুধা দ্বারা এবং (কখনও) জান-মাল ও ফল-ফসলের ক্ষয়ক্ষতি দ্বারা। সুসংবাদ শোনাও তাদেরকে, যারা (এরূপ অবস্থায়) সবরের পরিচয় দেয়।</div>
+  <div class="reference">[আল বাকারা ২:১৫৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২০। কুফুরী অবস্থায় মৃত্যুবরণ করার পরিণাম</div>
+  <div class="arabic-verse">اِنَّ الَّذِیۡنَ کَفَرُوۡا وَمَاتُوۡا وَہُمۡ کُفَّارٌ اُولٰٓئِکَ عَلَیۡہِمۡ لَعۡنَۃُ اللّٰہِ وَالۡمَلٰٓئِکَۃِ وَالنَّاسِ اَجۡمَعِیۡنَ ۙ</div>
+  <div class="translation">নিশ্চয়ই যারা কুফর অবলম্বন করেছে এবং কাফির অবস্থায়ই মারা গেছে, তাদের প্রতি আল্লাহর, ফিরিশতাদের এবং সমস্ত মানুষের লানত।</div>
+  <div class="reference">[আল বাকারা ২:১৬১]</div>
+</div>
+<div class="verse-container">
+  <div class="verse-title">২১। কুফুরী অবস্থায় মৃত্যুবরণ করার পরিণাম</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا النَّاسُ کُلُوۡا مِمَّا فِی الۡاَرۡضِ حَلٰلًا طَیِّبًا ۫ۖ وَّلَا تَتَّبِعُوۡا خُطُوٰتِ الشَّیۡطٰنِ ؕ اِنَّہٗ لَکُمۡ عَدُوٌّ مُّبِیۡنٌ</div>
+  <div class="translation">হে মানুষ! পৃথিবীতে যা-কিছু হালাল, উৎকৃষ্ট বস্তু আছে তা খাও এবং শয়তানের পদচিহ্ন ধরে চলো না। নিশ্চিত জান, সে তোমাদের এক প্রকাশ্য শত্রু।</div>
+  <div class="reference">[আল বাকারা ২:১৬৮]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২২। জাহান্নামীদের প্রতি তিরস্কার</div>
+  <div class="arabic-verse">اُولٰٓئِکَ الَّذِیۡنَ اشۡتَرَوُا الضَّلٰلَۃَ بِالۡہُدٰی وَالۡعَذَابَ بِالۡمَغۡفِرَۃِ ۚ فَمَاۤ اَصۡبَرَہُمۡ عَلَی النَّارِ</div>
+  <div class="translation">এরাই তারা, যারা হিদায়াতের পরিবর্তে গোমরাহী এবং মাগফিরাতের পরিবর্তে আযাব ক্রয় করে নিয়েছে। সুতরাং (ভেবে দেখ) জাহান্নামের আগুন সহ্য করার জন্য তারা কতই না ধৈর্যশীল!</div>
+  <div class="reference">[আল বাকারা ২:১৭৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৩। আল্লাহর পথে ব্যয়ের আদেশ</div>
+  <div class="arabic-verse">وَاَنۡفِقُوۡا فِیۡ سَبِیۡلِ اللّٰہِ وَلَا تُلۡقُوۡا بِاَیۡدِیۡکُمۡ اِلَی التَّہۡلُکَۃِ ۚۖۛ وَاَحۡسِنُوۡا ۚۛ اِنَّ اللّٰہَ یُحِبُّ الۡمُحۡسِنِیۡنَ</div>
+  <div class="translation">আর আল্লাহর পথে অর্থ ব্যয় কর এবং নিজ হাতে নিজেদেরকে ধ্বংসে নিক্ষেপ করো না। এবং সৎকর্ম অবলম্বন কর। নিশ্চয়ই আল্লাহ সৎকর্মশীলদের ভালোবাসেন।</div>
+  <div class="reference">[আল বাকারা ২:১৯৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৪। মুনাফিকের পরিচয়</div>
+  <div class="arabic-verse">وَمِنَ النَّاسِ مَن یُّعۡجِبُکَ قَوۡلُہٗ فِی الۡحَیٰوۃِ الدُّنۡیَا وَیُشۡہِدُ اللّٰہَ عَلٰی مَا فِیۡ قَلۡبِہٖ ۙ وَہُوَ اَلَدُّ الۡخِصَامِ</div>
+  <div class="translation">এবং মানুষের মধ্যে এমন লোকও আছে, পার্থিব জীবন সম্পর্কে যার কথা তোমাকে মুগ্ধ করে, আর তার অন্তরে যা আছে, সে ব্যাপারে আল্লাহকে সাক্ষীও বানায়, অথচ সে (তোমার) শত্রুদের মধ্যে সর্বাপেক্ষা কট্টর।</div>
+  <div class="reference">[আল বাকারা ২:২০৪]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৫। মুত্তাকীদের প্রতি আল্লাহ দয়ালু</div>
+  <div class="arabic-verse">وَمِنَ النَّاسِ مَن یَّشۡرِیۡ نَفۡسَہُ ابۡتِغَآءَ مَرۡضَاتِ اللّٰہِ ؕ وَاللّٰہُ رَءُوۡفٌۢ بِالۡعِبَادِ</div>
+  <div class="translation">মানুষের মধ্যে এমন লোকও আছে, যে আল্লাহর সন্তুষ্টির জন্য নিজ প্রাণকে বিক্রি করে দেয়। আল্লাহ (এরূপ) বান্দাদের প্রতি অতি দয়ালু।</div>
+  <div class="reference">[আল বাকারা ২:২০৭]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৬। শয়তাদের পথ অনুসরণ না করার আদেশ</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوا ادۡخُلُوۡا فِی السِّلۡمِ کَآفَّۃً ۪ وَلَا تَتَّبِعُوۡا خُطُوٰتِ الشَّیۡطٰنِ ؕ اِنَّہٗ لَکُمۡ عَدُوٌّ مُّبِیۡنٌ</div>
+  <div class="translation">হে মুমিনগণ! ইসলামে সম্পূর্ণরূপে প্রবেশ কর এবং শয়তানের পদাঙ্ক অনুসরণ করো না। নিশ্চয়ই সে তোমাদের প্রকাশ্য শত্রু।</div>
+  <div class="reference">[আল বাকারা ২:২০৮]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৭। আল্লাহর সাহায্য অতি নিকটে</div>
+  <div class="arabic-verse">اَمۡ حَسِبۡتُمۡ اَن تَدۡخُلُوا الۡجَنَّۃَ وَلَمَّا یَاۡتِکُمۡ مَّثَلُ الَّذِیۡنَ خَلَوۡا مِنۡ قَبۡلِکُمۡ ؕ مَسَّتۡہُمُ الۡبَاۡسَآءُ وَالضَّرَّآءُ وَزُلۡزِلُوۡا حَتّٰی یَقُوۡلَ الرَّسُوۡلُ وَالَّذِیۡنَ اٰمَنُوۡا مَعَہٗ مَتٰی نَصۡرُ اللّٰہِ ؕ اَلَاۤ اِنَّ نَصۡرَ اللّٰہِ قَرِیۡبٌ</div>
+  <div class="translation">(হে মুসলিমগণ!) তোমরা কি মনে করেছ, তোমরা জান্নাতে (এমনিতেই) প্রবেশ করবে, অথচ এখনও পর্যন্ত তোমাদের উপর সেই রকম অবস্থা আসেনি, যেমনটা এসেছিল তোমাদের পূর্ববর্তী লোকদের উপর। তাদেরকে স্পর্শ করেছিল অর্থ-সংকট ও দুঃখ-কষ্ট এবং তাদেরকে করা হয়েছিল প্রকম্পিত, এমনকি রাসূল এবং তাঁর ঈমানদার সঙ্গীগণ বলে উঠেছিল, আল্লাহর সাহায্য কখন আসবে? মনে রেখ, আল্লাহর সাহায্য নিকটেই।</div>
+  <div class="reference">[আল বাকারা ২:২১৪]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৮। আল্লাহকে উত্তম ঋণ দেয়ার আহবান</div>
+  <div class="arabic-verse">مَنۡ ذَا الَّذِیۡ یُقۡرِضُ اللّٰہَ قَرۡضًا حَسَنًا فَیُضٰعِفَہٗ لَہٗۤ اَضۡعَافًا کَثِیۡرَۃً ؕ وَاللّٰہُ یَقۡبِضُ وَیَبۡصُطُ ۪ وَاِلَیۡہِ تُرۡجَعُوۡنَ</div>
+  <div class="translation">কে আছে, যে আল্লাহকে উত্তম পন্থায় ঋণ দেবে, ফলে তিনি তার কল্যাণে তা বহুগুণ বৃদ্ধি করবেন? আল্লাহই সংকট সৃষ্টি করেন এবং তিনিই স্বচ্ছলতা দান করেন, আর তাঁরই কাছে তোমাদেরকে ফিরিয়ে নেওয়া হবে।</div>
+  <div class="reference">[আল বাকারা ২:২৪৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৯। আল্লাহর পথে ব্যয় করার আদেশ</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوۡۤا اَنۡفِقُوۡا مِمَّا رَزَقۡنٰکُمۡ مِّنۡ قَبۡلِ یَاۡتِیَ یَوۡمٌ لَّا بَیۡعٌ فِیۡہِ وَلَا خُلَّۃٌ وَّلَا شَفَاعَۃٌ ؕ وَالۡکٰفِرُوۡنَ ہُمُ الظّٰلِمُوۡنَ</div>
+  <div class="translation">হে মুমিনগণ! আমি তোমাদেরকে যে রিযক দিয়েছি তা থেকে সেই দিন আসার আগেই (আল্লাহর পথে) ব্যয় কর, যেদিন কোনও বেচাকেনা থাকবে না, কোনও বন্ধুত্ব (কাজে আসবে) না এবং কোনও সুপারিশও না। আর যারা কুফর অবলম্বন করেছে, তারাই জালিম।</div>
+  <div class="reference">[আল বাকারা ২:২৫৪]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৩০। আল্লাহ ইমানদারদের বন্ধু</div>
+  <div class="arabic-verse">اَللّٰہُ وَلِیُّ الَّذِیۡنَ اٰمَنُوۡا ۙ  یُخۡرِجُہُمۡ مِّنَ الظُّلُمٰتِ اِلَی النُّوۡرِ ۬ؕ  وَالَّذِیۡنَ کَفَرُوۡۤا اوۡلِیٰٓـُٔہُمُ الطَّاغُوۡتُ ۙ  یُخۡرِجُوۡنَہُمۡ مِّنَ النُّوۡرِ اِلَی الظُّلُمٰتِ ؕ اُولٰٓئِکَ اَصۡحٰبُ النَّارِ ۚ  ہُمۡ فِیۡہَا خٰلِدُوۡنَ</div>
+  <div class="translation">আল্লাহ মুমিনদের অভিভাবক। তিনি তাদেরকে অন্ধকার থেকে বের করে আলোতে নিয়ে আসেন। আর যারা কুফর অবলম্বন করেছে তাদের অভিভাবক শয়তান, যারা তাদেরকে আলো থেকে বের করে অন্ধকারে নিয়ে যায়। তারা সকলে অগ্নিবাসী। তারা সর্বদা তাতেই থাকবে।</div>
+  <div class="reference">[আল বাকারা ২:২৫৭]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৩১। আল্লাহর পথে দান করে খোঁটা দেয়া যাবে না</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوۡا لَا تُبۡطِلُوۡا صَدَقٰتِکُمۡ بِالۡمَنِّ وَالۡاَذٰی ۙ کَالَّذِیۡ یُنۡفِقُ مَالَہٗ رِئَآءَ النَّاسِ وَلَا یُؤۡمِنُ بِاللّٰہِ وَالۡیَوۡمِ الۡاٰخِرِ ؕ</div>
+  <div class="translation">হে মুমিনগণ! খোটা দিয়ে ও কষ্ট দিয়ে নিজেদের সদাকাকে সেই ব্যক্তির মত নষ্ট করো না, যে নিজের সম্পদ ব্যয় করে মানুষকে দেখানোর জন্য এবং আল্লাহ ও পরকালে বিশ্বাস রাখে না।</div>
+  <div class="reference">[আল বাকারা ২:২৬৪]</div>
+</div>
+
+<!-- Zoom Controls -->
+<div class="zoom-controls zoom-arabic">
+  <button data-target=".arabic-verse" data-action="in">＋</button>
+  <button data-target=".arabic-verse" data-action="out">－</button>
+</div>
+
+<div class="zoom-controls zoom-bangla">
+  <button data-target=".translation" data-action="in">＋</button>
+  <button data-target=".translation" data-action="out">－</button>
+</div>
+
+<script>
+const buttons = document.querySelectorAll('button[data-target]');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.querySelectorAll(btn.getAttribute('data-target'));
+    const action = btn.getAttribute('data-action');
+    target.forEach(el => {
+      let style = window.getComputedStyle(el).fontSize;
+      let size = parseFloat(style);
+      if(action === 'in') el.style.fontSize = (size + 2) + 'px';
+      if(action === 'out') el.style.fontSize = (size - 2) + 'px';
+    });
+  });
+});
+</script>
 
 </body>
 </html>
