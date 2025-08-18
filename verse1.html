@@ -1,230 +1,155 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কুরআনের আয়াতসমূহ</title>
-  <style>
-    /* Font Imports from GitHub */
-    @font-face {
-      font-family: 'SolaimanLipi';
-      src: url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.ttf') format('truetype');
-      font-display: swap;
-    }
-    
-    @font-face {
-      font-family: 'Al_Majeed_Quranic';
-      src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
-      font-display: swap;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: 'SolaimanLipi', sans-serif;
-      background-color: #f8f5f0;
-      color: #333;
-      line-height: 1.6;
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      padding-bottom: 60px; /* Space for zoom controls */
-    }
-    
-    .verse-container {
-      margin-bottom: 30px;
-      padding: 15px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .verse-title {
-      font-size: 13px;
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
-    }
-    
-    .arabic-verse {
-      font-family: 'Al_Majeed_Quranic', serif;
-      font-size: 15px;
-      text-align: right;
-      direction: rtl;
-      line-height: 2;
-      margin: 15px 0;
-      color: #1a3e72;
-      transition: font-size 0.3s ease;
-    }
-    
-    .translation {
-      font-size: 12px;
-      margin: 10px 0;
-      text-align: justify;
-    }
-    
-    .reference {
-      font-size: 11px;
-      color: #7f8c8d;
-      text-align: right;
-      font-style: italic;
-      margin-top: 10px;
-    }
-    
-    .zoom-controls {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background: white;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      display: flex;
-      gap: 10px;
-      z-index: 100;
-    }
-    
-    .zoom-btn {
-      background: #2c3e50;
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .zoom-btn:hover {
-      background: #1a3e72;
-    }
-    
-    .zoom-reset {
-      background: #7f8c8d;
-    }
-    
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      
-      .verse-container {
-        padding: 10px;
-      }
-      
-      .arabic-verse {
-        font-size: 14px;
-        line-height: 1.8;
-      }
-      
-      .translation {
-        font-size: 11px;
-      }
-      
-      .zoom-controls {
-        bottom: 5px;
-        right: 5px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আয়াত তালিকা -১</title>
+
+<!-- বাংলা ফন্ট -->
+<link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
+
+<style>
+/* আরবি ফন্ট লোড */
+@font-face {
+  font-family: 'Al_Majeed_Quranic';
+  src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
+  font-display: swap;
+}
+
+body {
+  font-family: 'SolaimanLipi', sans-serif;
+  background-color: #033E3E;
+  color: #FFFFFF;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 24px;
+}
+
+.verse-container {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.05); /* হালকা পার্থক্য */
+}
+
+.verse-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.arabic-verse {
+  font-family: 'Al_Majeed_Quranic', serif;
+  font-size: 30px;
+  text-align: right;
+  direction: rtl;
+  line-height: 2;
+  margin: 15px 0;
+  transition: font-size 0.3s ease;
+}
+
+.translation {
+  font-size: 22px;
+  margin: 10px 0;
+  text-align: justify;
+  transition: font-size 0.3s ease;
+}
+
+.reference {
+  font-size: 20px;
+  text-align: right;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Zoom controls */
+.zoom-controls {
+  position: fixed;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.zoom-arabic {
+  right: 20px;
+}
+
+.zoom-bangla {
+  left: 20px;
+}
+
+.zoom-controls button {
+  background: #555;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.2s;
+}
+
+.zoom-controls button:hover {
+  background: #777;
+}
+</style>
 </head>
 <body>
-  <div class="verse-container">
-    <div class="verse-title">১। কিভাবে আল্লাহর সাথে কুফুরী কর?</div>
-    <div class="arabic-verse">کَیۡفَ تَکۡفُرُوۡنَ بِاللّٰہِ وَکُنۡتُمۡ اَمۡوَاتًا فَاَحۡیَاکُمۡ ۚ ثُمَّ یُمِیۡتُکُمۡ ثُمَّ یُحۡیِیۡکُمۡ ثُمَّ اِلَیۡہِ تُرۡجَعُوۡنَ</div>
-    <div class="translation">তোমরা আল্লাহর সাথে কুফরী কর্মপন্থা কিভাবে অবলম্বন কর, অথচ তোমরা ছিলে নিষ্প্রাণ, অতঃপর তিনিই তোমাদেরকে জীবন দান করেছেন। অতঃপর তিনিই তোমাদের মৃত্যু ঘটাবেন, অতঃপর তিনি (পুনরায়) তোমাদেরকে জীবিত করবেন, তারপর তোমরা তাঁরই কাছে ফিরে যাবে।</div>
-    <div class="reference">(আল বাকারা ২:২৮)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">২। কুফুরীর পরিণাম</div>
-    <div class="arabic-verse">وَالَّذِیۡنَ کَفَرُوۡا وَکَذَّبُوۡا بِاٰیٰتِنَاۤ اُولٰٓئِکَ اَصۡحٰبُ النَّارِ ۚ  ہُمۡ فِیۡہَا خٰلِدُوۡنَ</div>
-    <div class="translation">আর যারা কুফরীতে লিপ্ত হবে এবং আমার আয়াতসমূহ প্রত্যাখ্যান করবে, তারা জাহান্নামবাসী। তারা সেখানে সর্বদা থাকবে।</div>
-    <div class="reference">(আল বাকারা ২:৩৯)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৩। সত্য গোপন না করার আদেশ</div>
-    <div class="arabic-verse">وَلَا تَلۡبِسُوا الۡحَقَّ بِالۡبَاطِلِ وَتَکۡتُمُوا الۡحَقَّ وَاَنۡتُمۡ تَعۡلَمُوۡنَ</div>
-    <div class="translation">এবং সত্যকে মিথ্যার সাথে মিশ্রিত করো না এবং সত্যকে গোপনও করো না, যখন (প্রকৃত অবস্থা) তোমরা ভালোভাবে জান।</div>
-    <div class="reference">(আল বাকারা ২:৪২)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৪। সালাত কায়েমের আদেশ</div>
-    <div class="arabic-verse">وَاَقِیۡمُوا الصَّلٰوۃَ وَاٰتُوا الزَّکٰوۃَ وَارۡکَعُوۡا مَعَ الرّٰکِعِیۡنَ</div>
-    <div class="translation">এবং তোমরা সালাত কায়েম কর, যাকাত আদায় কর ও রুকূ কারীদের সাথে রুকূ কর।</div>
-    <div class="reference">(আল বাকারা ২:৪৩)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৫। সালাতের মাধ্যমে আল্লাহর সাহায্য চাইতে হবে</div>
-    <div class="arabic-verse">وَاسۡتَعِیۡنُوۡا بِالصَّبۡرِ وَالصَّلٰوۃِ ؕ  وَاِنَّہَا لَکَبِیۡرٌَۛ اِلَّا عَلَی الۡخٰشِعِیۡنَ ۙ</div>
-    <div class="translation">এবং সবর ও সালাতের মাধ্যমে সাহায্য লাভ কর। সালাতকে অবশ্যই কঠিন মনে হয়, কিন্তু তাদের পক্ষে (কঠিন) নয়, যারা খুশূ (অর্থাৎ ধ্যান ও বিনয়)-এর সাথে পড়ে।</div>
-    <div class="reference">(আল বাকারা ২:৪৫)</div>
-  </div>
 
-  <div class="zoom-controls">
-    <button class="zoom-btn" id="zoomOut">-</button>
-    <button class="zoom-btn zoom-reset" id="zoomReset">↻</button>
-    <button class="zoom-btn" id="zoomIn">+</button>
-  </div>
+<!-- আয়াত তালিকা শুরু -->
 
-  <script>
-    // Arabic text zoom functionality with localStorage
-    document.addEventListener('DOMContentLoaded', function() {
-      const arabicVerses = document.querySelectorAll('.arabic-verse');
-      const zoomInBtn = document.getElementById('zoomIn');
-      const zoomOutBtn = document.getElementById('zoomOut');
-      const zoomResetBtn = document.getElementById('zoomReset');
-      
-      // Load saved zoom level or set default
-      let currentZoom = localStorage.getItem('arabicTextZoom') || 1;
-      applyZoom(currentZoom);
-      
-      // Zoom in function
-      zoomInBtn.addEventListener('click', function() {
-        currentZoom = Math.min(parseFloat(currentZoom) + 0.1, 2.0); // Max zoom 2.0
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Zoom out function
-      zoomOutBtn.addEventListener('click', function() {
-        currentZoom = Math.max(parseFloat(currentZoom) - 0.1, 0.7); // Min zoom 0.7
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Reset zoom function
-      zoomResetBtn.addEventListener('click', function() {
-        currentZoom = 1;
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Apply zoom to all Arabic text
-      function applyZoom(zoomLevel) {
-        const baseSize = 15; // Base font size in pixels
-        arabicVerses.forEach(verse => {
-          verse.style.fontSize = (baseSize * zoomLevel) + 'px';
-        });
-      }
-      
-      // Save zoom level to localStorage
-      function saveZoom() {
-        localStorage.setItem('arabicTextZoom', currentZoom);
-      }
+<div class="verse-container">
+  <div class="verse-title">১। আল্লাহর নিকট ফিরে যেতে হবে</div>
+  <div class="arabic-verse">کَیۡفَ تَکۡفُرُوۡنَ بِاللّٰہِ ...</div>
+  <div class="translation">তোমরা আল্লাহর সাথে কুফরী কর্মপন্থা...</div>
+  <div class="reference">[আল বাকারা ২:২৮]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২। কুফুরীতে লিপ্ত হওয়ার পরিণাম</div>
+  <div class="arabic-verse">وَالَّذِیۡنَ کَفَرُوۡا ...</div>
+  <div class="translation">আর যারা কুফরীতে লিপ্ত হবে ...</div>
+  <div class="reference">[আল বাকারা ২:৩৯]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৩। সত্য মিথ্যার মিশ্রণ করো না</div>
+  <div class="arabic-verse">وَلَا تَلۡبِسُوا ...</div>
+  <div class="translation">এবং সত্যকে মিথ্যার সাথে মিশ্রিত করো না ...</div>
+  <div class="reference">[আল বাকারা ২:৪২]</div>
+</div>
+
+<!-- ... একইভাবে ৩০+ আয়াত যুক্ত করতে হবে ... -->
+
+<!-- Zoom Controls -->
+<div class="zoom-controls zoom-arabic">
+  <button data-target=".arabic-verse" data-action="in">＋</button>
+  <button data-target=".arabic-verse" data-action="out">－</button>
+</div>
+
+<div class="zoom-controls zoom-bangla">
+  <button data-target=".translation" data-action="in">＋</button>
+  <button data-target=".translation" data-action="out">－</button>
+</div>
+
+<script>
+const buttons = document.querySelectorAll('button[data-target]');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.querySelectorAll(btn.getAttribute('data-target'));
+    const action = btn.getAttribute('data-action');
+    target.forEach(el => {
+      let style = window.getComputedStyle(el).fontSize;
+      let size = parseFloat(style);
+      if(action === 'in') el.style.fontSize = (size + 2) + 'px';
+      if(action === 'out') el.style.fontSize = (size - 2) + 'px';
     });
-  </script>
+  });
+});
+</script>
+
 </body>
 </html>
