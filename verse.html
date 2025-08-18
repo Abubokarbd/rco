@@ -3,228 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কুরআনের আয়াতসমূহ</title>
+  <title>আয়াত তালিকা -১</title>
+
+  <!-- বাংলা ফন্ট -->
+  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
+
   <style>
-    /* Font Imports from GitHub */
-    @font-face {
-      font-family: 'SolaimanLipi';
-      src: url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.ttf') format('truetype');
-      font-display: swap;
-    }
-    
+    /* আরবি ফন্ট লোড */
     @font-face {
       font-family: 'Al_Majeed_Quranic';
       src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
       font-display: swap;
     }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
+
     body {
       font-family: 'SolaimanLipi', sans-serif;
-      background-color: #f8f5f0;
-      color: #333;
+      background-color: transparent; /* ট্রান্সফারেন্ট পেজ */
+      color: #F1D6FF; /* ফন্ট কালার */
       line-height: 1.6;
       padding: 20px;
       max-width: 800px;
       margin: 0 auto;
       padding-bottom: 60px;
+      font-size: 32px;
     }
-    
+
     .verse-container {
-      margin-bottom: 30px;
-      padding: 15px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 40px;
+      padding: 20px;
+      background-color: transparent; /* ট্রান্সফারেন্ট */
+      border-radius: 10px;
     }
-    
+
     .verse-title {
-      font-size: 13px;
+      font-size: 28px;
       font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
+      margin-bottom: 15px;
     }
-    
+
     .arabic-verse {
       font-family: 'Al_Majeed_Quranic', serif;
-      font-size: 15px;
+      font-size: 30px;
       text-align: right;
       direction: rtl;
       line-height: 2;
       margin: 15px 0;
-      color: #1a3e72;
       transition: font-size 0.3s ease;
+      color: #F1D6FF;
     }
-    
+
     .translation {
-      font-size: 12px;
+      font-size: 24px;
       margin: 10px 0;
       text-align: justify;
+      transition: font-size 0.3s ease;
+      color: #F1D6FF;
     }
-    
+
     .reference {
-      font-size: 11px;
-      color: #7f8c8d;
+      font-size: 22px;
       text-align: right;
       font-style: italic;
       margin-top: 10px;
+      color: #F1D6FF;
     }
-    
+
+    /* Zoom controls */
     .zoom-controls {
       position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background: white;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+      bottom: 20px;
       display: flex;
       gap: 10px;
-      z-index: 100;
+      z-index: 1000;
     }
-    
-    .zoom-btn {
-      background: #2c3e50;
-      color: white;
+
+    .zoom-arabic {
+      right: 20px;
+    }
+
+    .zoom-bangla {
+      left: 20px;
+    }
+
+    .zoom-controls button {
+      background: #333; /* হালকা ডার্ক */
+      color: #F1D6FF;
       border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 18px;
+      border-radius: 8px;
+      padding: 10px 14px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      font-size: 20px;
+      transition: background 0.2s;
     }
-    
-    .zoom-btn:hover {
-      background: #1a3e72;
-    }
-    
-    .zoom-reset {
-      background: #7f8c8d;
-    }
-    
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      
-      .verse-container {
-        padding: 10px;
-      }
-      
-      .arabic-verse {
-        font-size: 14px;
-        line-height: 1.8;
-      }
-      
-      .translation {
-        font-size: 11px;
-      }
-      
-      .zoom-controls {
-        bottom: 5px;
-        right: 5px;
-      }
+
+    .zoom-controls button:hover {
+      background: #555;
     }
   </style>
 </head>
 <body>
+
   <div class="verse-container">
-    <div class="verse-title">১। কিয়ামতের দিনকে ভয় কর</div>
-    <div class="arabic-verse">وَاتَّقُوۡا یَوۡمًا لَّا تَجۡزِیۡ نَفۡسٌ عَنۡ نَّفۡسٍ شَیۡئًا وَّلَا یُقۡبَلُ مِنۡہَا شَفَاعَۃٌ وَّلَا یُؤۡخَذُ مِنۡہَا عَدۡلٌ وَّلَا ہُمۡ یُنۡصَرُوۡنَ</div>
-    <div class="translation">এবং সেই দিনকে ভয় কর, যে দিন কোনও ব্যক্তি কারও কোনও কাজে আসবে না, কারও পক্ষ হতে কোনও সুপারিশ গৃহীত হবে না, কারও থেকে কোনও রকম মুক্তিপণ গ্রহণ করা হবে না এবং তাদের কোনও রকম সাহায্যও করা হবে না।</div>
-    <div class="reference">(আল বাকারা ২:৪৮)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">২। জান্নাতিদের জন্য সুসংবাদ</div>
-    <div class="arabic-verse">وَالَّذِیۡنَ اٰمَنُوۡا وَعَمِلُوا الصّٰلِحٰتِ اُولٰٓئِکَ اَصۡحٰبُ الۡجَنَّۃِ ۚ  ہُمۡ فِیۡہَا خٰلِدُوۡنَ</div>
-    <div class="translation">যেসব লোক ঈমান আনে ও সৎকর্ম করে, তারা জান্নাতবাসী। তারা সর্বদা সেখানে থাকবে।</div>
-    <div class="reference">(আল বাকারা ২:৮২)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৩। পুরো কিতাবের প্রতি ঈমান আনতে হবে</div>
-    <div class="arabic-verse">اَفَتُؤۡمِنُوۡنَ بِبَعۡضِ الۡکِتٰبِ وَتَکۡفُرُوۡنَ بِبَعۡضٍ ۚ فَمَا جَزَآءُ مَنۡ یَّفۡعَلُ ذٰلِکَ مِنۡکُمۡ اِلَّا خِزۡیٌ فِی الۡحَیٰوۃِ الدُّنۡیَا ۚ وَیَوۡمَ الۡقِیٰمَۃِ یُرَدُّوۡنَ اِلٰۤی اَشَدِّ الۡعَذَابِ</div>
-    <div class="translation">তবে কি তোমরা কিতাবের (অর্থাৎ তাওরাতের) কিছু অংশে ঈমান রাখ এবং কিছু অংশ অস্বীকার কর? তাহলে বল, তোমাদের মধ্যে যারা এরূপ করে তাদের শাস্তি এ ছাড়া আর কী হতে পারে যে, পার্থিব জীবনে তাদের জন্য থাকবে লাঞ্ছনা আর কিয়ামতের দিন তাদেরকে নিয়ে যাওয়া হবে কঠিনতর আযাবের দিকে?</div>
-    <div class="reference">(আল বাকারা ২:৮৫)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৪। আখেরাতকে প্রাধান্য না দেয়ার পরিণাম</div>
-    <div class="arabic-verse">اُولٰٓئِکَ الَّذِیۡنَ اشۡتَرَوُا الۡحَیٰوۃَ الدُّنۡیَا بِالۡاٰخِرَۃِ ۫  فَلَا یُخَفَّفُ عَنۡہُمُ الۡعَذَابُ وَلَا ہُمۡ یُنۡصَرُوۡنَ</div>
-    <div class="translation">এরাই তারা, যারা আখিরাতের বিনিময়ে পার্থিব জীবনকে ক্রয় করে নিয়েছে। সুতরাং তাদের শাস্তি কিছুমাত্র লাঘব করা হবে না এবং তাদেরকে সাহায্যও করা হবে না।</div>
-    <div class="reference">(আল বাকারা ২:৮৬)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৫। আসমান ও জমিনের রাজত্ব আল্লাহর</div>
-    <div class="arabic-verse">اَلَمۡ تَعۡلَمۡ اَنَّ اللّٰہَ لَہٗ مُلۡکُ السَّمٰوٰتِ وَالۡاَرۡضِ ؕ وَمَا لَکُمۡ مِّنۡ دُوۡنِ اللّٰہِ مِنۡ وَّلِیٍّ وَّلَا نَصِیۡرٍ</div>
-    <div class="translation">তুমি কি জান না আল্লাহ তাআলা এমন সত্তা যে, আকাশমণ্ডল ও পৃথিবীর সার্বভৌমত্ব কেবল তাঁরই এবং আল্লাহ ছাড়া তোমাদের কোনও অভিভাবক নেই এবং সাহায্যকারীও নেই?</div>
-    <div class="reference">(আল বাকারা ২:১০৭)</div>
+    <div class="verse-title">১। আল্লাহর নিকট ফিরে যেতে হবে</div>
+    <div class="arabic-verse" id="arabicVerse">
+      کَیۡفَ تَکۡفُرُوۡنَ بِاللّٰہِ وَکُنۡتُمۡ اَمۡوَاتًا فَاَحۡیَاکُمۡ ۚ ثُمَّ یُمِیۡتُکُمۡ ثُمَّ یُحۡیِیۡکُمۡ ثُمَّ اِلَیۡہِ تُرۡجَعُوۡنَ
+    </div>
+    <div class="translation" id="banglaTranslation">
+      তোমরা আল্লাহর সাথে কুফরী কর্মপন্থা কিভাবে অবলম্বন কর, অথচ তোমরা ছিলে নিষ্প্রাণ, অতঃপর তিনিই তোমাদেরকে জীবন দান করেছেন। অতঃপর তিনিই তোমাদের মৃত্যু ঘটাবেন, অতঃপর তিনি (পুনরায়) তোমাদেরকে জীবিত করবেন, তারপর তোমরা তাঁরই কাছে ফিরে যাবে।
+    </div>
+    <div class="reference">[আল বাকারা ২:২৮]</div>
   </div>
 
-  <div class="zoom-controls">
-    <button class="zoom-btn" id="zoomOut">-</button>
-    <button class="zoom-btn zoom-reset" id="zoomReset">↻</button>
-    <button class="zoom-btn" id="zoomIn">+</button>
+  <!-- Arabic Zoom Controls -->
+  <div class="zoom-controls zoom-arabic">
+    <button onclick="zoomIn('arabicVerse')">＋</button>
+    <button onclick="zoomOut('arabicVerse')">－</button>
+  </div>
+
+  <!-- Bangla Zoom Controls -->
+  <div class="zoom-controls zoom-bangla">
+    <button onclick="zoomIn('banglaTranslation')">＋</button>
+    <button onclick="zoomOut('banglaTranslation')">－</button>
   </div>
 
   <script>
-    // Arabic text zoom functionality with localStorage
-    document.addEventListener('DOMContentLoaded', function() {
-      const arabicVerses = document.querySelectorAll('.arabic-verse');
-      const zoomInBtn = document.getElementById('zoomIn');
-      const zoomOutBtn = document.getElementById('zoomOut');
-      const zoomResetBtn = document.getElementById('zoomReset');
-      
-      // Load saved zoom level or set default
-      let currentZoom = localStorage.getItem('arabicTextZoom') || 1;
-      applyZoom(currentZoom);
-      
-      // Zoom in function
-      zoomInBtn.addEventListener('click', function() {
-        currentZoom = Math.min(parseFloat(currentZoom) + 0.1, 2.0);
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Zoom out function
-      zoomOutBtn.addEventListener('click', function() {
-        currentZoom = Math.max(parseFloat(currentZoom) - 0.1, 0.7);
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Reset zoom function
-      zoomResetBtn.addEventListener('click', function() {
-        currentZoom = 1;
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Apply zoom to all Arabic text
-      function applyZoom(zoomLevel) {
-        const baseSize = 15;
-        arabicVerses.forEach(verse => {
-          verse.style.fontSize = (baseSize * zoomLevel) + 'px';
-        });
-      }
-      
-      // Save zoom level to localStorage
-      function saveZoom() {
-        localStorage.setItem('arabicTextZoom', currentZoom);
-      }
-    });
+    function zoomIn(id) {
+      const el = document.getElementById(id);
+      let style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+      let currentSize = parseFloat(style);
+      el.style.fontSize = (currentSize + 2) + 'px';
+    }
+
+    function zoomOut(id) {
+      const el = document.getElementById(id);
+      let style = window.getComputedStyle(el, null).getPropertyValue('font-size');
+      let currentSize = parseFloat(style);
+      el.style.fontSize = (currentSize - 2) + 'px';
+    }
   </script>
+
 </body>
 </html>
