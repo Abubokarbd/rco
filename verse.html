@@ -31,7 +31,7 @@ body {
   margin-bottom: 40px;
   padding: 20px;
   border-radius: 10px;
-  background-color: rgba(255,255,255,0.05); /* হালকা পার্থক্য */
+  background-color: rgba(255,255,255,0.05);
 }
 
 .verse-title {
@@ -42,7 +42,7 @@ body {
 
 .arabic-verse {
   font-family: 'Al_Majeed_Quranic', serif;
-  font-size: 30px;
+  font-size: 30px; /* ইনলাইন স্টাইলেও থাকবে */
   text-align: right;
   direction: rtl;
   line-height: 2;
@@ -51,7 +51,7 @@ body {
 }
 
 .translation {
-  font-size: 22px;
+  font-size: 22px; /* ইনলাইন স্টাইলেও থাকবে */
   margin: 10px 0;
   text-align: justify;
   transition: font-size 0.3s ease;
@@ -98,7 +98,6 @@ body {
 </style>
 </head>
 <body>
-
 <!-- আয়াত তালিকা শুরু -->
 
 <div class="verse-container">
@@ -334,8 +333,11 @@ buttons.forEach(btn => {
     const target = document.querySelectorAll(btn.getAttribute('data-target'));
     const action = btn.getAttribute('data-action');
     target.forEach(el => {
-      let style = window.getComputedStyle(el).fontSize;
-      let size = parseFloat(style);
+      // WebView-র জন্য ফন্ট সাইজ ফিক্সড ইনলাইন থেকে নাও
+      let size = parseFloat(el.style.fontSize);
+      if(isNaN(size)) {
+        size = parseFloat(window.getComputedStyle(el).fontSize);
+      }
       if(action === 'in') el.style.fontSize = (size + 2) + 'px';
       if(action === 'out') el.style.fontSize = (size - 2) + 'px';
     });
