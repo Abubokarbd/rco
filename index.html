@@ -130,6 +130,22 @@
         flex: 0 0 48%; /* এক লাইনে দুই বাটন থাকবে, খুব ছোট স্ক্রিনেও */
       }
     }
+
+
+    .messenger-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #0084FF;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.messenger-button:hover {
+  background-color: #005ecb;
+}
+
   </style>
 </head>
 <body>
@@ -147,12 +163,25 @@
     <button id="devButton" class="app-button">Contact</button> 
   </div>
 
-  <div id="devModal" class="modal">
+  
+<!-- চিঠি বাটন ডিজেবল্ড করা 
+<div id="devModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
       <iframe src="https://chithi.me/absict" allow="autoplay"></iframe>
     </div>
+</div> 
+-->
+  <div id="devModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>আমাদের সাথে সরাসরি যোগাযোগ করতে নিচের বাটনে ক্লিক করুন:</p>
+    <a href="https://www.facebook.com/messages/t/absict" target="_blank" class="messenger-button">
+      Messenger এ মেসেজ করুন
+    </a>
   </div>
+</div>
+
 
   <script>
     const modal = document.getElementById("devModal");
