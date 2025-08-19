@@ -9,7 +9,6 @@
   <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
 
   <style>
-    /* Apply font globally */
     * {
       margin: 0;
       padding: 0;
@@ -35,7 +34,30 @@
     }
 
     .header h1 {
-      font-size: 48px; /* ডাবল ফন্ট সাইজ */
+      font-size: 48px;
+    }
+
+    .scroll-text-container {
+      overflow: hidden;
+      white-space: nowrap;
+      margin-bottom: 20px;
+    }
+
+    .scroll-text {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 12s linear infinite;
+      font-size: 28px;
+      color: #FFD700;
+    }
+
+    @keyframes scroll-left {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
     }
 
     a, a:visited, a:hover, a:active, button, .app-button {
@@ -47,26 +69,26 @@
     .button-grid {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between; /* দুই বাটন পাশে পাশে রাখবে */
+      justify-content: space-between;
       gap: 10px;
       margin-bottom: 20px;
     }
 
     .app-button {
-      flex: 0 0 48%; /* দুইটি বাটন এক লাইনে */
+      flex: 0 0 48%;
       background-color: #2196F3;
       color: white;
       border: none;
       padding: 15px;
       border-radius: 6px;
-      font-size: 25px; /* ডাবল ফন্ট সাইজ */
+      font-size: 25px;
       cursor: pointer;
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       transition: all 0.3s;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 80px; /* বাটন উঁচু করা ফন্ট অনুযায়ী */
+      height: 80px;
     }
 
     .app-button:hover {
@@ -103,7 +125,7 @@
       font-size: 28px;
       font-weight: bold;
       cursor: pointer;
-      color: #000; /* কালো রঙে পরিবর্তন */
+      color: #000;
     }
 
     iframe {
@@ -115,18 +137,11 @@
 
     @media (max-width: 500px) {
       .app-button {
-        flex: 0 0 48%;
         font-size: 28px;
         height: 70px;
       }
       .header h1 {
         font-size: 40px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .app-button {
-        flex: 0 0 48%;
       }
     }
 
@@ -145,20 +160,19 @@
       background-color: #005ecb;
     }
 
-    /* Offline message style */
     #offlineMessage {
-      display:none;
-      position:fixed;
-      bottom:20px;
-      left:50%;
-      transform:translateX(-50%);
-      background-color:#ff4d4d;
-      color:#fff;
-      padding:15px 25px;
-      border-radius:8px;
-      font-size:18px;
-      box-shadow:0 2px 5px rgba(0,0,0,0.3);
-      z-index:200;
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #ff4d4d;
+      color: #fff;
+      padding: 15px 25px;
+      border-radius: 8px;
+      font-size: 18px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      z-index: 200;
     }
   </style>
 </head>
@@ -166,6 +180,13 @@
 
   <div class="header">
     <h1>RCOzone</h1>
+  </div>
+
+  <!-- CSS-based scrolling text -->
+  <div class="scroll-text-container">
+  <div class="scroll-text"> 
+  আসসালামুয়ালাইকুম, ডকুমেন্ট অপশনটা আপাদত বন্ধ করে রাখা হল, কিন্তু ভেতরে ডকুমেন্ট থাকবে, এখানে এখন ৭ টি ডকুমেন্ট আছে, আরো যোগ করা হচ্ছে, এই অপশনটি আপনার প্রয়োজন হলে আমাকে নক করুন। আমি কিছুক্ষণের জন্য চালু করে দেবো এর পর আবার বন্ধ হয়ে যাবে। 
+  </div>
   </div>
 
   <div class="button-grid">
@@ -210,23 +231,21 @@
       }
     }
 
-    // App-buttons ইন্টারনেট চেক
     const buttons = document.querySelectorAll(".app-button");
     const offlineMessage = document.getElementById("offlineMessage");
 
     buttons.forEach(button => {
       button.addEventListener("click", function(event) {
         if (!navigator.onLine) {
-          event.preventDefault(); // লিংক ফলো হবে না
+          event.preventDefault();
           offlineMessage.style.display = "block";
           setTimeout(() => {
             offlineMessage.style.display = "none";
-          }, 3000); // 3 সেকেন্ডে hide
+          }, 3000);
         }
       });
     });
 
-    // ব্রাউজার অনলাইন/অফলাইন লগ
     window.addEventListener('offline', () => console.log("ইন্টারনেট নেই"));
     window.addEventListener('online', () => console.log("ইন্টারনেট আছে"));
   </script>
