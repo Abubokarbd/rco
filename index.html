@@ -66,6 +66,21 @@
       color: inherit;
     }
 
+    .section-header {
+      width: 100%;
+      background-color: #2196F3;
+      color: white;
+      padding: 15px;
+      border-radius: 25px 25px 6px 6px;
+      font-size: 25px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      margin-bottom: 10px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
     .button-grid {
       display: flex;
       flex-wrap: wrap;
@@ -96,70 +111,6 @@
       transform: translateY(-2px);
     }
 
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 100;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.8);
-    }
-
-    .modal-content {
-      background-color: #fefefe;
-      margin: 5% auto;
-      padding: 20px;
-      border-radius: 10px;
-      width: 90%;
-      max-width: 600px;
-      height: 85%;
-      position: relative;
-    }
-
-    .close {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      font-size: 28px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #000;
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      border-radius: 5px;
-    }
-
-    @media (max-width: 500px) {
-      .app-button {
-        font-size: 28px;
-        height: 70px;
-      }
-      .header h1 {
-        font-size: 40px;
-      }
-    }
-
-    .messenger-button {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #0084FF;
-      color: white;
-      text-decoration: none;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .messenger-button:hover {
-      background-color: #005ecb;
-    }
-
     #offlineMessage {
       display: none;
       position: fixed;
@@ -173,6 +124,22 @@
       font-size: 18px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
       z-index: 200;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; bottom: 0; }
+      to { opacity: 1; bottom: 20px; }
+    }
+
+    @media (max-width: 500px) {
+      .app-button, .section-header {
+        font-size: 28px;
+        height: 70px;
+      }
+      .header h1 {
+        font-size: 40px;
+      }
     }
   </style>
 </head>
@@ -189,6 +156,9 @@
   </div>
   </div>
 
+  <!-- New section header with only top corners curved -->
+  <div class="section-header">সংক্ষিপ্ত আয়াত তালিকা</div>
+
   <div class="button-grid">
     <a href="https://abubokarbd.github.io/rco/verse.html" class="app-button">আয়াত-১</a>
     <a href="https://abubokarbd.github.io/rco/verse1.html" class="app-button">আয়াত-২</a>
@@ -196,59 +166,51 @@
     <a href="https://abubokarbd.github.io/rco/verse3.html" class="app-button">আয়াত-৪</a>
     <a href="https://abubokarbd.github.io/rco/doc.html" class="app-button">ডকুমেন্ট</a>
     <a href="https://abubokarbd.github.io/rco/khutbah.html" class="app-button">খুতবাহ</a>
-    
-  </div>
-
-  <!-- Contact Modal -->
-  <div id="devModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <p>আমাদের সাথে সরাসরি যোগাযোগ করতে নিচের বাটনে ক্লিক করুন:</p>
-      <a href="https://www.facebook.com/messages/t/absict" target="_blank" class="messenger-button">
-        Messenger এ মেসেজ করুন
-      </a>
-    </div>
   </div>
 
   <!-- Offline message -->
   <div id="offlineMessage">দয়া করে আপনার ইন্টারনেট কানেকশন চেক করুন।</div>
 
   <script>
-    const modal = document.getElementById("devModal");
-    const btn = document.getElementById("devButton");
-    const span = document.getElementsByClassName("close")[0];
-
-    btn.onclick = function() {
-      modal.style.display = "block";
+    // উন্নত অফলাইন ডিটেকশন ফাংশন
+    function checkConnectivity() {
+      const offlineMessage = document.getElementById('offlineMessage');
+      
+      // নিয়মিত কানেকশন চেক
+      setInterval(function() {
+        if (!navigator.onLine) {
+          offlineMessage.style.display = 'block';
+        } else {
+          offlineMessage.style.display = 'none';
+        }
+      }, 3000); // প্রতি ৩ সেকেন্ডে চেক করবে
     }
-
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
-    window.onclick = function(event) {
-      if (event.target == modal) {
-        modal.style.display = "none";
-      }
-    }
-
+    
+    // পেজ লোড হলে চেক শুরু করবে
+    window.addEventListener('load', checkConnectivity);
+    
+    // স্ট্যান্ডার্ড ইভেন্ট লিসেনার্স
+    window.addEventListener('offline', function() {
+      document.getElementById('offlineMessage').style.display = 'block';
+    });
+    
+    window.addEventListener('online', function() {
+      document.getElementById('offlineMessage').style.display = 'none';
+    });
+    
+    // বাটন ক্লিক হ্যান্ডলার
     const buttons = document.querySelectorAll(".app-button");
-    const offlineMessage = document.getElementById("offlineMessage");
-
     buttons.forEach(button => {
       button.addEventListener("click", function(event) {
         if (!navigator.onLine) {
           event.preventDefault();
-          offlineMessage.style.display = "block";
+          document.getElementById('offlineMessage').style.display = 'block';
           setTimeout(() => {
-            offlineMessage.style.display = "none";
-          }, 3000);
+            document.getElementById('offlineMessage').style.display = 'none';
+          }, 5000); // ৫ সেকেন্ডের জন্য দেখাবে
         }
       });
     });
-
-    window.addEventListener('offline', () => console.log("ইন্টারনেট নেই"));
-    window.addEventListener('online', () => console.log("ইন্টারনেট আছে"));
   </script>
 
 </body>
