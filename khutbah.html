@@ -239,7 +239,7 @@
     async function fetchPassword() {
       try {
         const sheetId = '1m1YJbWaoLgr0fo5-f9mWnB0ROnoru0mnt2yipq0obV0';
-        const response = await fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&range=G4`);
+        const response = await fetch(`https://docs.google.com/spreadsheets/d/${sheetId}/gviz/tq?tqx=out:json&range=H4`);
         const text = await response.text();
         const json = JSON.parse(text.substr(47).slice(0, -2));
         return json.table.rows[0].c[0].v;
