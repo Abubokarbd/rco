@@ -48,7 +48,16 @@
       padding-left: 100%;
       animation: scroll-left 20s linear infinite;
       font-size: 28px;
+    }
+
+    /* ডিফল্ট রং হলুদ */
+    .scroll-text.yellow {
       color: #FFD700;
+    }
+    
+    /* ২ দিন পর সাদা রং */
+    .scroll-text.white {
+      color: #FFFFFF;
     }
 
     @keyframes scroll-left {
@@ -151,9 +160,10 @@
 
   <!-- CSS-based scrolling text -->
   <div class="scroll-text-container">
-  <div class="scroll-text"> 
-  আসসালামুয়ালাইকুম, ডকুমেন্ট অপশনটা আপাদত বন্ধ করে রাখা হল, কিন্তু ভেতরে ডকুমেন্ট থাকবে, এখানে এখন ৭ টি ডকুমেন্ট আছে, আরো যোগ করা হচ্ছে, এই অপশনটি আপনার প্রয়োজন হলে আমাকে নক করুন। আমি কিছুক্ষণের জন্য চালু করে দেবো এর পর আবার বন্ধ হয়ে যাবে। 
-  </div>
+    <div class="scroll-text yellow" id="scrollingText"> 
+       আসসালামুয়ালাইকুম, আয়াত ১, আয়াত ২, এই দুইটা বাটন আপডেট করা হয়েছে, ডকুমেন্টে আরো কিছু ডকুমেন্ট যোগ করা হয়েছে,  
+
+    </div>
   </div>
 
   <!-- New section header with only top corners curved -->
@@ -172,6 +182,41 @@
   <div id="offlineMessage">দয়া করে আপনার ইন্টারনেট কানেকশন চেক করুন।</div>
 
   <script>
+    // স্ক্রলিং টেক্সটের রং পরিবর্তনের ফাংশন
+    function updateTextColor() {
+      const scrollingText = document.getElementById('scrollingText');
+      const now = new Date();
+      const storedDate = localStorage.getItem('textColorChangeDate');
+      
+      // যদি localStorage-এ তারিখ সেভ না করা থাকে
+      if (!storedDate) {
+        // বর্তমান তারিখ সেভ করুন
+        localStorage.setItem('textColorChangeDate', now.toISOString());
+        scrollingText.classList.add('yellow');
+        scrollingText.classList.remove('white');
+        return;
+      }
+      
+      const storedTime = new Date(storedDate);
+      const twoDaysLater = new Date(storedTime.getTime() + (2 * 24 * 60 * 60 * 1000)); // ২ দিন পর
+      
+      // যদি ২ দিন পার হয়ে গেছে
+      if (now >= twoDaysLater) {
+        scrollingText.classList.remove('yellow');
+        scrollingText.classList.add('white');
+      } else {
+        scrollingText.classList.add('yellow');
+        scrollingText.classList.remove('white');
+        
+        // ২ দিন পর স্বয়ংক্রিয়ভাবে রং পরিবর্তনের জন্য টাইমার সেট করুন
+        const timeUntilChange = twoDaysLater.getTime() - now.getTime();
+        setTimeout(() => {
+          scrollingText.classList.remove('yellow');
+          scrollingText.classList.add('white');
+        }, timeUntilChange);
+      }
+    }
+    
     // উন্নত অফলাইন ডিটেকশন ফাংশন
     function checkConnectivity() {
       const offlineMessage = document.getElementById('offlineMessage');
@@ -186,8 +231,11 @@
       }, 3000); // প্রতি ৩ সেকেন্ডে চেক করবে
     }
     
-    // পেজ লোড হলে চেক শুরু করবে
-    window.addEventListener('load', checkConnectivity);
+    // পেজ লোড হলে ফাংশনগুলো চালু করবে
+    window.addEventListener('load', function() {
+      updateTextColor();
+      checkConnectivity();
+    });
     
     // স্ট্যান্ডার্ড ইভেন্ট লিসেনার্স
     window.addEventListener('offline', function() {
