@@ -50,12 +50,10 @@
       font-size: 28px;
     }
 
-    /* ডিফল্ট রং হলুদ */
     .scroll-text.yellow {
       color: #FFD700;
     }
     
-    /* ২ দিন পর সাদা রং */
     .scroll-text.white {
       color: #FFFFFF;
     }
@@ -100,7 +98,7 @@
 
     .app-button {
       flex: 0 0 48%;
-      background-color: #2196F3; /* সব বাটনের রং #2196F3 (নীল) */
+      background-color: #2196F3;
       color: white;
       border: none;
       padding: 15px;
@@ -132,10 +130,10 @@
       border-radius: 8px;
       font-size: 18px;
       box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-      z-index: 200;
+      z-index: 9999;
       animation: fadeIn 0.5s ease-in-out;
     }
-    
+
     @keyframes fadeIn {
       from { opacity: 0; bottom: 0; }
       to { opacity: 1; bottom: 20px; }
@@ -158,24 +156,21 @@
     <h1>RCOzone</h1>
   </div>
 
-  <!-- CSS-based scrolling text -->
   <div class="scroll-text-container">
     <div class="scroll-text yellow" id="scrollingText"> 
-  আসসালামুয়ালাইকুম, আয়াত ১, আয়াত ২, এই দুইটা বাটন আপডেট করা হয়েছে, ডকুমেন্টে আরো কিছু ডকুমেন্ট যোগ করা হয়েছে। 
+      আসসালামুয়ালাইকুম, আয়াত ১, আয়াত ২, এই দুইটা বাটন আপডেট করা হয়েছে, ডকুমেন্টে আরো কিছু ডকুমেন্ট যোগ করা হয়েছে। 
     </div>
   </div>
 
-  <!-- New section header with only top corners curved -->
   <div class="section-header">সংক্ষিপ্ত আয়াত তালিকা</div>
 
   <div class="button-grid">
     <a href="https://abubokarbd.github.io/rco/verse.html" class="app-button">আয়াত-১</a>
-    <a href="https://abubokarbd.github.io/rco/verse1.html" class="app-button">আয়াত-२</a>
+    <a href="https://abubokarbd.github.io/rco/verse1.html" class="app-button">আয়াত-২</a>
     <a href="https://abubokarbd.github.io/rco/verse2.html" class="app-button">আয়াত-৩</a>
     <a href="https://abubokarbd.github.io/rco/verse3.html" class="app-button">আয়াত-৪</a>
   </div>
 
-  <!-- নতুন জরুরী দরকারী লিংক সেকশন -->
   <div class="section-header">জরুরী দরকারী লিংক</div>
 
   <div class="button-grid">
@@ -183,37 +178,31 @@
     <a href="https://abubokarbd.github.io/rco/khutbah.html" class="app-button">খুতবাহ</a>
   </div>
 
-  <!-- Offline message -->
   <div id="offlineMessage">দয়া করে আপনার ইন্টারনেট কানেকশন চেক করুন।</div>
 
   <script>
-    // স্ক্রলিং টেক্সটের রং পরিবর্তনের ফাংশন
     function updateTextColor() {
       const scrollingText = document.getElementById('scrollingText');
       const now = new Date();
       const storedDate = localStorage.getItem('textColorChangeDate');
-      
-      // যদি localStorage-এ তারিখ সেভ না করা থাকে
+
       if (!storedDate) {
-        // বর্তমান তারিখ সেভ করুন
         localStorage.setItem('textColorChangeDate', now.toISOString());
         scrollingText.classList.add('yellow');
         scrollingText.classList.remove('white');
         return;
       }
-      
+
       const storedTime = new Date(storedDate);
-      const twoDaysLater = new Date(storedTime.getTime() + (2 * 24 * 60 * 60 * 1000)); // ২ দিন পর
-      
-      // যদি ২ দিন পার হয়ে গেছে
+      const twoDaysLater = new Date(storedTime.getTime() + (2 * 24 * 60 * 60 * 1000));
+
       if (now >= twoDaysLater) {
         scrollingText.classList.remove('yellow');
         scrollingText.classList.add('white');
       } else {
         scrollingText.classList.add('yellow');
         scrollingText.classList.remove('white');
-        
-        // ২ দিন পর স্বয়ংক্রিয়ভাবে রং পরিবর্তনের জন্য টাইমার সেট করুন
+
         const timeUntilChange = twoDaysLater.getTime() - now.getTime();
         setTimeout(() => {
           scrollingText.classList.remove('yellow');
@@ -221,46 +210,21 @@
         }, timeUntilChange);
       }
     }
-    
-    // উন্নত অফলাইন ডিটেকশন ফাংশন
-    function checkConnectivity() {
-      const offlineMessage = document.getElementById('offlineMessage');
-      
-      // নিয়মিত কানেকশন চেক
-      setInterval(function() {
-        if (!navigator.onLine) {
-          offlineMessage.style.display = 'block';
-        } else {
-          offlineMessage.style.display = 'none';
-        }
-      }, 3000); // প্রতি ৩ সেকেন্ডে চেক করবে
-    }
-    
-    // পেজ লোড হলে ফাংশনগুলো চালু করবে
+
     window.addEventListener('load', function() {
       updateTextColor();
-      checkConnectivity();
     });
-    
-    // স্ট্যান্ডার্ড ইভেন্ট লিসেনার্স
-    window.addEventListener('offline', function() {
-      document.getElementById('offlineMessage').style.display = 'block';
-    });
-    
-    window.addEventListener('online', function() {
-      document.getElementById('offlineMessage').style.display = 'none';
-    });
-    
-    // বাটন ক্লিক হ্যান্ডলার
+
     const buttons = document.querySelectorAll(".app-button");
     buttons.forEach(button => {
       button.addEventListener("click", function(event) {
         if (!navigator.onLine) {
           event.preventDefault();
-          document.getElementById('offlineMessage').style.display = 'block';
+          const offlineMessage = document.getElementById('offlineMessage');
+          offlineMessage.style.display = 'block';
           setTimeout(() => {
-            document.getElementById('offlineMessage').style.display = 'none';
-          }, 5000); // ৫ সেকেন্ডের জন্য দেখাবে
+            offlineMessage.style.display = 'none';
+          }, 5000);
         }
       });
     });
