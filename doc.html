@@ -1,15 +1,11 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>আরসিও ডকুমেন্টস</title>
+  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet" />
   <style>
-    
-  body {
-  font-family: 'SolaimanLipi', sans-serif;
-}
-
     * {
       box-sizing: border-box;
       margin: 0;
@@ -34,7 +30,6 @@
 
     ol.documents {
       padding-left: 25px;
-      margin: 0;
     }
 
     ol.documents li {
@@ -65,7 +60,7 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0,0,0,0.8);
+      background-color: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
     }
@@ -74,7 +69,7 @@
       width: 95%;
       height: 90%;
       border: none;
-      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
     }
 
     .close {
@@ -88,16 +83,13 @@
     }
 
     .popup-download {
-      position: absolute;
-      top: 15px;
-      left: 20px;
       font-size: 16px;
       color: white;
       background-color: #0077cc;
       padding: 5px 10px;
       border-radius: 4px;
-      text-decoration: none;
-      z-index: 1000;
+      border: none;
+      cursor: pointer;
       transition: background 0.2s;
     }
 
@@ -105,7 +97,6 @@
       background-color: #005fa3;
     }
 
-    /* Password Protection Styles */
     .password-container {
       position: fixed;
       top: 0;
@@ -169,82 +160,93 @@
       body {
         padding: 10px;
       }
-      
+
       .modal iframe {
         width: 98%;
         height: 85%;
       }
-      
+
       .close {
         font-size: 25px;
         top: 10px;
         right: 15px;
       }
-      
+
       .popup-download {
         font-size: 14px;
-        top: 10px;
-        left: 15px;
       }
-      
+
       .password-box {
         padding: 20px;
       }
     }
   </style>
-  <link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
-
 </head>
 <body>
   <!-- Password Protection -->
   <div class="password-container" id="passwordContainer">
     <div class="password-box">
       <h2>পাসওয়ার্ড দিন</h2>
-      <input type="password" id="passwordInput" placeholder="পাসওয়ার্ড">
+      <input type="password" id="passwordInput" placeholder="পাসওয়ার্ড" />
       <button id="passwordSubmit">প্রবেশ করুন</button>
       <div class="error-message" id="errorMessage">ভুল পাসওয়ার্ড! আবার চেষ্টা করুন</div>
     </div>
   </div>
 
-  <!-- Main Content (hidden until password is correct) -->
+  <!-- Main Content -->
   <div id="content" style="display: none;">
     <h1>আরসিও সম্পর্কিত ডকুমেন্টস</h1>
-
     <ol class="documents">
       <li><a href="#" data-id="1sGIRqE8G7ApY1M9XGDA8r3UYUH5QgAdW">আরসিও নামকরণ</a></li>
-       <li><a href="#" data-id="1P-CwhHTuQe-_a4RiPdo9oH_hmMtbl8u9">৯ম গ্রেড উন্নীতকরণ ২৮ ফেব্রুয়ারী ২৪ </a></li>
-      
+      <li><a href="#" data-id="1P-CwhHTuQe-_a4RiPdo9oH_hmMtbl8u9">৯ম গ্রেড উন্নীতকরণ ২৮ ফেব্রুয়ারী ২৪</a></li>
       <li><a href="#" data-id="1yORDrUiB6Nnu5f6fLftdgpRLHq8XW_IC">দরবারে আসন বিন্যাস</a></li>
       <li><a href="#" data-id="1QEF1AHMS1YBy3mACwhxaUzdaQf_mCBo6">আরটির চারিত্রিক বৈশিষ্ট্য</a></li>
-      <li><a href="#" data-id="1Yq9mL3qHHSQ4pJlDTzEMoNpWIoeptufi"> বদলীর স্থায়ী নীতিমালা, বৈদেশিক নিয়োগ </a></li>
-     
+      <li><a href="#" data-id="1Yq9mL3qHHSQ4pJlDTzEMoNpWIoeptufi">বদলীর স্থায়ী নীতিমালা, বৈদেশিক নিয়োগ</a></li>
       <li><a href="#" data-id="13n30lPDSpCI98GemDLZFZxPbCMRXwRKU">বদলীর সুপারিশ তদবির বিষয়ক</a></li>
       <li><a href="#" data-id="1iO9QclcowYSkXkBF0B0VA36xjd4XWic5">মৃত ব্যক্তি সৎকার পদ্ধতি</a></li>
       <li><a href="#" data-id="1amUvBx-_6AS7z7MncJrYXeGzH8oh69Iq">লিভ রুল ছুটির নীতিমালা</a></li>
-       <li><a href="#" data-id="1BVVJ6TPpR8vVgdv7B-pOf6tv3rRSwJo3">২ মাস বাৎসরিক ছুটি, রেশন প্রদান </a></li>
-     
+      <li><a href="#" data-id="1BVVJ6TPpR8vVgdv7B-pOf6tv3rRSwJo3">২ মাস বাৎসরিক ছুটি, রেশন প্রদান</a></li>
       <li><a href="#" data-id="1DwgQZfUiL7A3gRsm8_fFbKkxQYenur4M">সম্মান ও মর্যাদা নিশ্চিতকরণ (ইজ্জতের চিঠি)</a></li>
- <li><a href="#" data-id="1GhXwqdn49gg3QcYGGBAs36soRfRN3iuN">সাবান বিতরণ </a></li>
-     
+      <li><a href="#" data-id="1GhXwqdn49gg3QcYGGBAs36soRfRN3iuN">সাবান বিতরণ</a></li>
     </ol>
 
     <!-- Modal Viewer -->
     <div id="modal" class="modal">
       <span class="close">&times;</span>
-      <a id="popupDownload" class="popup-download" href="#" target="_blank">⬇️ ডাউনলোড</a>
-      <iframe id="pdfViewer" src="" allow="autoplay"></iframe>
-    </div>
-  </div>
+      <form method="GET" action="https://drive.google.com/uc" style="position: absolute; top: 15px; left: 20px; z-index: 1000;">
+        <input type="hidden" name="export" value="download" />
+        <input type="hidden" id="fileIdInput" name="id" value="" />
+        <button type="submit" class="popup-download">⬇️ ডাউনলোড</
 
-  <script>
+   
+  
+    
+    
+     
+   
+
+<!-- Modal Viewer -->
+<div id="modal" class="modal">
+  <span class="close">&times;</span>
+  <form method="GET" action="https://drive.google.com/uc" style="position: absolute; top: 15px; left: 20px; z-index: 1000;">
+    <input type="hidden" name="export" value="download" />
+    <input type="hidden" id="fileIdInput" name="id" value="" />
+    <button type="submit" class="popup-download">⬇️ ডাউনলোড</button>
+  </form>
+  <iframe id="pdfViewer" src="" allow="autoplay"></iframe>
+</div>
+
+
+
+
+            <script>
     // Password Protection System
     const passwordContainer = document.getElementById('passwordContainer');
     const passwordInput = document.getElementById('passwordInput');
     const passwordSubmit = document.getElementById('passwordSubmit');
     const errorMessage = document.getElementById('errorMessage');
     const content = document.getElementById('content');
-    
-    // Fetch password from Google Sheets
+
     async function fetchPassword() {
       try {
         const sheetId = '1m1YJbWaoLgr0fo5-f9mWnB0ROnoru0mnt2yipq0obV0';
@@ -254,16 +256,15 @@
         return json.table.rows[0].c[0].v;
       } catch (error) {
         console.error('Error fetching password:', error);
-        return 'defaultPassword'; // Fallback password if fetch fails
+        return 'defaultPassword';
       }
     }
 
-    // Initialize password protection
     let correctPassword = '';
-    
+
     async function initPasswordProtection() {
       correctPassword = await fetchPassword();
-      
+
       passwordSubmit.addEventListener('click', checkPassword);
       passwordInput.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') checkPassword();
@@ -274,7 +275,6 @@
       if (passwordInput.value === correctPassword) {
         passwordContainer.style.display = 'none';
         content.style.display = 'block';
-        // Store in session so password isn't needed again
         sessionStorage.setItem('passwordVerified', 'true');
       } else {
         errorMessage.style.display = 'block';
@@ -283,7 +283,6 @@
       }
     }
 
-    // Check if already verified in this session
     if (sessionStorage.getItem('passwordVerified') === 'true') {
       passwordContainer.style.display = 'none';
       content.style.display = 'block';
@@ -291,18 +290,18 @@
       initPasswordProtection();
     }
 
-    // Main Document Viewer Functionality
+    // Modal Viewer Logic
     const modal = document.getElementById('modal');
     const viewer = document.getElementById('pdfViewer');
     const closeBtn = document.querySelector('.close');
-    const popupDownload = document.getElementById('popupDownload');
+    const fileIdInput = document.getElementById('fileIdInput');
 
     document.querySelectorAll('.documents a').forEach(tag => {
       tag.addEventListener('click', function(e) {
         e.preventDefault();
         const fileId = this.getAttribute('data-id');
         viewer.src = `https://drive.google.com/file/d/${fileId}/preview`;
-        popupDownload.href = `https://drive.google.com/uc?export=download&id=${fileId}`;
+        fileIdInput.value = fileId;
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
       });
@@ -311,7 +310,7 @@
     closeBtn.addEventListener('click', () => {
       modal.style.display = 'none';
       viewer.src = '';
-      popupDownload.href = '#';
+      fileIdInput.value = '';
       document.body.style.overflow = 'auto';
     });
 
@@ -319,10 +318,12 @@
       if (e.target === modal) {
         modal.style.display = 'none';
         viewer.src = '';
-        popupDownload.href = '#';
+        fileIdInput.value = '';
         document.body.style.overflow = 'auto';
       }
     });
   </script>
 </body>
 </html>
+
+  
