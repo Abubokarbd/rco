@@ -1,235 +1,352 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>কুরআনের আয়াতসমূহ</title>
-  <style>
-    /* Font Imports from GitHub */
-    @font-face {
-      font-family: 'SolaimanLipi';
-      src: url('https://abubokarbd.github.io/rco/fonts/solaimanlipi.ttf') format('truetype');
-      font-display: swap;
-    }
-    
-    @font-face {
-      font-family: 'Al_Majeed_Quranic';
-      src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
-      font-display: swap;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: 'SolaimanLipi', sans-serif;
-      background-color: #f8f5f0;
-      color: #333;
-      line-height: 1.6;
-      padding: 20px;
-      max-width: 800px;
-      margin: 0 auto;
-      padding-bottom: 60px;
-    }
-    
-    .verse-container {
-      margin-bottom: 30px;
-      padding: 15px;
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    
-    .verse-title {
-      font-size: 13px;
-      font-weight: bold;
-      color: #2c3e50;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #eee;
-      padding-bottom: 5px;
-    }
-    
-    .arabic-verse {
-      font-family: 'Al_Majeed_Quranic', serif;
-      font-size: 15px;
-      text-align: right;
-      direction: rtl;
-      line-height: 2;
-      margin: 15px 0;
-      color: #1a3e72;
-      transition: font-size 0.3s ease;
-    }
-    
-    .translation {
-      font-size: 12px;
-      margin: 10px 0;
-      text-align: justify;
-    }
-    
-    .reference {
-      font-size: 11px;
-      color: #7f8c8d;
-      text-align: right;
-      font-style: italic;
-      margin-top: 10px;
-    }
-    
-    .zoom-controls {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      background: white;
-      padding: 10px;
-      border-radius: 5px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-      display: flex;
-      gap: 10px;
-      z-index: 100;
-    }
-    
-    .zoom-btn {
-      background: #2c3e50;
-      color: white;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .zoom-btn:hover {
-      background: #1a3e72;
-    }
-    
-    .zoom-reset {
-      background: #7f8c8d;
-    }
-    
-    @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-      
-      .verse-container {
-        padding: 10px;
-      }
-      
-      .arabic-verse {
-        font-size: 14px;
-        line-height: 1.8;
-      }
-      
-      .translation {
-        font-size: 11px;
-      }
-      
-      .zoom-controls {
-        bottom: 5px;
-        right: 5px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>আয়াত তালিকা -১</title>
+
+<!-- বাংলা ফন্ট -->
+<link href="https://fonts.maateen.me/solaiman-lipi/font.css" rel="stylesheet"/>
+
+<style>
+/* আরবি ফন্ট লোড */
+@font-face {
+  font-family: 'Al_Majeed_Quranic';
+  src: url('https://abubokarbd.github.io/rco/fonts/Al_Majeed_Quranic.ttf') format('truetype');
+  font-display: swap;
+}
+
+body {
+  font-family: 'SolaimanLipi', sans-serif;
+  background-color: #033E3E;
+  color: #FFFFFF;
+  line-height: 1.6;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 24px;
+}
+
+.verse-container {
+  margin-bottom: 40px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: rgba(255,255,255,0.05);
+}
+
+.verse-title {
+  font-size: 25px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.arabic-verse {
+  font-family: 'Al_Majeed_Quranic', serif;
+  font-size: 30px; /* ইনলাইন স্টাইলেও থাকবে */
+  text-align: right;
+  direction: rtl;
+  line-height: 2;
+  margin: 15px 0;
+  transition: font-size 0.3s ease;
+}
+
+.translation {
+  font-size: 22px; /* ইনলাইন স্টাইলেও থাকবে */
+  margin: 10px 0;
+  text-align: justify;
+  transition: font-size 0.3s ease;
+}
+
+.reference {
+  font-size: 20px;
+  text-align: right;
+  font-style: italic;
+  margin-top: 10px;
+}
+
+/* Zoom controls */
+.zoom-controls {
+  position: fixed;
+  bottom: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.zoom-arabic {
+  right: 20px;
+}
+
+.zoom-bangla {
+  left: 20px;
+}
+
+.zoom-controls button {
+  background: #555;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background 0.2s;
+}
+
+.zoom-controls button:hover {
+  background: #777;
+}
+</style>
 </head>
 <body>
-  <!-- Previous verses here... -->
+<!-- আয়াত তালিকা শুরু -->
+<div class="verse-container">
+  <div class="verse-title">১। প্রিয় বস্তু হতে আল্লাহর পথে ব্যয় করতে হবে</div>
+  <div class="arabic-verse">لَنۡ تَنَالُوا الۡبِرَّ حَتّٰی تُنۡفِقُوۡا مِمَّا تُحِبُّوۡنَ ۬ؕ وَمَا تُنۡفِقُوۡا مِنۡ شَیۡءٍ فَاِنَّ اللّٰہَ بِہٖ عَلِیۡمٌ</div>
+  <div class="translation">তোমরা কিছুতেই পুণ্যের নাগাল পাবে না, যতক্ষণ না তোমরা তোমাদের প্রিয় বস্তু হতে (আল্লাহর জন্য) ব্যয় করবে। তোমরা যা-কিছুই ব্যয় কর, আল্লাহ সে সম্পর্কে পূর্ণ অবগত।</div>
+  <div class="reference">[আলে ইমরান ৩:৯২]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২। মুসলিম না হয়ে মৃত্যুবরণ করো না</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوا اتَّقُوا اللّٰہَ حَقَّ تُقٰتِہٖ وَلَا تَمُوۡتُنَّ اِلَّا وَاَنۡتُمۡ مُّسۡلِمُوۡنَ</div>
+  <div class="translation">হে মুমিনগণ! অন্তরে আল্লাহকে সেইভাবে ভয় কর, যেভাবে তাকে ভয় করা উচিত। (সাবধান! অন্য কোনও অবস্থায় যেন) তোমাদের মৃত্যু (না আসে, বরং) এই অবস্থায়ই যেন আসে যে, তোমরা মুসলিম।</div>
+  <div class="reference">[আলে ইমরান ৩:১০২]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৩। এক দল দা'য়ী থাকতে হবে</div>
+  <div class="arabic-verse">وَلۡتَکُنۡ مِّنۡکُمۡ اُمَّۃٌ یَّدۡعُوۡنَ اِلَی الۡخَیۡرِ وَیَاۡمُرُوۡنَ بِالۡمَعۡرُوۡفِ وَیَنۡہَوۡنَ عَنِ الۡمُنۡکَرِ ؕ وَاُولٰٓئِکَ ہُمُ الۡمُفۡلِحُوۡنَ</div>
+  <div class="translation">তোমাদের মধ্যে এমন একটি দল থাকা চাই, যারা (মানুষকে) কল্যাণের দিকে ডাকবে, সৎকাজের আদেশ করবে ও মন্দ কাজে বাধা দেবে। এরূপ লোকই সফলতা লাভকারী।</div>
+  <div class="reference">[আলে ইমরан ৩:১০৪]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৪। মতভেদে জড়ানো যাবে না</div>
+  <div class="arabic-verse">وَلَا تَکُوۡنُوۡا کَالَّذِیۡنَ تَفَرَّقُوۡا وَاخۡتَلَفُوۡا مِنۡۢ بَعۡدِ مَا جَآءَہُمُ الۡبَیِّنٰتُ ؕ  وَاُولٰٓئِکَ لَہُمۡ عَذَابٌ عَظِیۡمٌ</div>
+  <div class="translation">তোমরা তাদের (অর্থাৎ ইয়াহুদী ও নাসারার) মতো হয়ো না, যারা স্পষ্ট প্রমাণ পাওয়ার পরও দলে দলে বিভক্ত হয়ে গেল এবং মতভেদে জড়িয়ে পড়ল। এদের জন্য রয়েছে কঠিন শাস্তি।</div>
+  <div class="reference">[আলে ইমরান ৩:১০৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৫। সর্বোত্তম জাতির দায়িত্ব</div>
+  <div class="arabic-verse">کُنۡتُمۡ خَیۡرَ اُمَّۃٍ اُخۡرِجَتۡ لِلنَّاسِ تَاۡمُرُوۡنَ بِالۡمَعۡرُوۡفِ وَتَنۡہَوۡنَ عَنِ الۡمُنۡکَرِ وَتُؤۡمِنُوۡنَ بِاللّٰہِ ؕ</div>
+  <div class="translation">(হে মুসলিমগণ!) তোমরা সেই শ্রেষ্ঠতম দল, মানুষের কল্যাণের জন্য যাদের অস্তিত্ব দান করা হয়েছে। তোমরা সৎকাজের আদেশ করে থাক ও অন্যায় কাজে বাধা দিয়ে থাক এবং আল্লাহর প্রতি ঈমান রাখ।</div>
+  <div class="reference">[আলে ইমরান ৩:১১০]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৬। কুফুরী করলে সন্তান এবং সম্পদ কোন কাজে আসবে না</div>
+  <div class="arabic-verse">اِنَّ الَّذِیۡنَ کَفَرُوۡا لَنۡ تُغۡنِیَ عَنۡہُمۡ اَمۡوَالُہُمۡ وَلَاۤ اَوۡلَادُہُمۡ مِّنَ اللّٰہِ شَیۡـًٔا ؕ وَاُولٰٓئِکَ اَصۡحٰبُ النَّارِ ۚ ہُمۡ فِیۡہَا خٰلِدُوۡنَ</div>
+  <div class="translation">(এর বিপরীতে) যারা কুফর অবলম্বন করেছে, আল্লাহর বিপরীতে তাদের অর্থ-সম্পদ তাদের কোনও কাজে আসবে না এবং তাদের সন্তান-সন্ততিও নয় এবং তারা জাহান্নামবাসী। তাতেই তারা সর্বদা থাকবে।</div>
+  <div class="reference">[আলে ইমরান ৩:১১৬]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৭। আল্লাহ যাকে ইচ্ছা ক্ষমা করেন, যাকে ইচ্ছা শাস্তি দেন</div>
+  <div class="arabic-verse">وَلِلّٰہِ مَا فِی السَّمٰوٰتِ وَمَا فِی الۡاَرۡضِ ؕ  یَغۡفِرُ لِمَنۡ یَّشَآءُ وَیُعَذِّبُ مَنۡ یَّشَآءُ ؕ  وَاللّٰہُ غَفُوۡرٌ رَّحِیۡمٌ </div>
+  <div class="translation">আকাশমণ্ডল ও পৃথিবীতে যা-কিছু আছে, তা আল্লাহরই। তিনি যাকে ইচ্ছা ক্ষমা করেন, আর যাকে চান শাস্তি দেন। আল্লাহ অতি ক্ষমাশীল, পরম দয়ালু。</div>
+  <div class="reference">[আলে ইমরান ৩:১২৯]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৮। আল্লাহ ও রাসূলের আনুগত্য করার আদেশ</div>
+  <div class="arabic-verse">وَاتَّقُوا النَّارَ الَّتِیۡۤ اُعِدَّتۡ لِلۡکٰفِرِیۡنَ - وَاَطِیۡعُوا اللّٰہَ وَالرَّسُوۡلَ لَعَلَّکُمۡ تُرۡحَمُوۡنَ </div>
+  <div class="translation">এবং সেই আগুনকে ভয় কর, যা কাফিরদের জন্য প্রস্তুত করা হয়েছে। এবং আল্লাহ ও রাসূলের আনুগত্য কর, যাতে তোমাদের প্রতি রহমতের আচরণ করা হয়।</div>
+  <div class="reference">[আলে ইমরান ৩:১৩১-১৩২]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৯। জান্নাত লাভের প্রচেষ্টায় অগ্রসর হও</div>
+  <div class="arabic-verse">وَسَارِعُوۡۤا اِلٰی مَغۡفِرَۃٍ مِّنۡ رَّبِّکُمۡ وَجَنَّۃٍ عَرۡضُہَا السَّمٰوٰتُ وَالۡاَرۡضُ ۙ  اُعِدَّتۡ لِلۡمُتَّقِیۡنَ ۙ</div>
+  <div class="translation">এবং নিজ প্রতিপালকের পক্ষ হতে মাগফিরাত ও সেই জান্নাত লাভের জন্য একে অন্যের সাথে প্রতিযোগিতায় লিপ্ত হও, যার প্রশস্ততা আকাশমণ্ডল ও পৃথিবীতুল্য। তা সেই মুত্তাকীদের জন্য প্রস্তুত করা হয়েছে।</div>
+  <div class="reference">[আলে ইমরান ৩:১৩৩]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১০। মুমিনদের গুণাবলি</div>
+  <div class="arabic-verse">الَّذِیۡنَ یُنۡفِقُوۡنَ فِی السَّرَّآءِ وَالضَّرَّآءِ وَالۡکٰظِمِیۡنَ الۡغَیۡظَ وَالۡعَافِیۡنَ عَنِ النَّاسِ ؕ  وَاللّٰہُ یُحِبُّ الۡمُحۡسِنِیۡنَ ۚ</div>
+  <div class="translation">যারা সচ্ছল ও অসচ্ছল অবস্থায় (আল্লাহর জন্য অর্থ) ব্যয় করে এবং যারা নিজের ক্রোধ হজম করতে ও মানুষকে ক্ষমা করতে অভ্যস্ত। আল্লাহ এরূপ পুণ্যবানদেরকে ভালোবাসেন।</div>
+  <div class="reference">[আলে ইমরান ৩:১৩৪]</div>
+</div>
 
   <div class="verse-container">
-    <div class="verse-title">১। আসমানসমূহ ও যমীনের অস্তিত্বদাতা</div>
-    <div class="arabic-verse">وَاتَّقُوۡا یَوۡمًا لَّا تَجۡزِیۡ نَفۡسٌ عَنۡ نَّفۡسٍ شَیۡئًا وَّلَا یُقۡبَلُ مِنۡہَا عَدۡلٌ وَّلَا تَنۡفَعُہَا شَفَاعَۃٌ وَّلَا ہُمۡ یُنۡصَرُوۡنَ</div>
-    <div class="translation">এবং সেই দিনকে ভয় কর, যে-দিন কেউ কারও কোনও কাজে আসবে না, কারও থেকে কোনওরূপ মুক্তিপণ গৃহীত হবে না, কোনও সুপারিশ কারও উপকার করবে না এবং তারা কোনও সাহায্যও লাভ করবে না।</div>
-    <div class="reference">(আল বাকারা ২:১২৩)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">২। আল্লাহ সবরকারীদের সঙ্গে আছেন</div>
-    <div class="arabic-verse">فَاذۡکُرُوۡنِیۡۤ اَذۡکُرۡکُمۡ وَاشۡکُرُوۡا لِیۡ وَلَا تَکۡفُرُوۡنِ - یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوا اسۡتَعِیۡنُوۡا بِالصَّبۡرِ وَالصَّلٰوۃِ ؕ اِنَّ اللّٰہَ مَعَ الصّٰبِرِیۡنَ</div>
-    <div class="translation">সুতরাং তোমরা আমাকে স্মরণ কর, আমি তোমাদেরকে স্মরণ করব আর আমার শুকর আদায় কর, আমার অকৃতজ্ঞতা করো না। হে মুমিনগণ! সবর ও সালাতের মাধ্যমে সাহায্য লাভ কর। নিশ্চয়ই আল্লাহ সবরকারীদের সঙ্গে আছেন।</div>
-    <div class="reference">(আল বাকারা ২:১৫২-১৫৩)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৩। আল্লাহর পথে শহিদরা জীবিত</div>
-    <div class="arabic-verse">وَلَا تَقُوۡلُوۡا لِمَنۡ یُّقۡتَلُ فِیۡ سَبِیۡلِ اللّٰہِ اَمۡوَاتٌ ؕ بَلۡ اَحۡیَآءٌ وَّلٰکِنۡ لَّا تَشۡعُرُوۡنَ</div>
-    <div class="translation">আর যারা আল্লাহর পথে নিহত হয়েছে তাদেরকে মৃত বলো না। প্রকৃতপক্ষে তারা জীবিত, কিন্তু তোমরা (তাদের জীবিত থাকার বিষয়টা) উপলব্ধি করতে পার না।</div>
-    <div class="reference">(আল বাকারা ২:১৫৪)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৪। আল্লাহ ইমানদারদের পরীক্ষা করেন</div>
-    <div class="arabic-verse">وَلَنَبۡلُوَنَّکُمۡ بِشَیۡءٍ مِّنَ الۡخَوۡعِ وَالۡجُوۡعِ وَنَقۡصٍ مِّنَ الۡاَمۡوَالِ وَالۡاَنۡفُسِ وَالثَّمَرٰتِ ؕ  وَبَشِّرِ الصّٰبِرِیۡنَ ۙ</div>
-    <div class="translation">আর আমি অবশ্যই তোমাদেরকে পরীক্ষা করব (কখনও) কিছুটা ভয়-ভীতি দ্বারা, (কখনও) ক্ষুধা দ্বারা এবং (কখনও) জান-মাল ও ফল-ফসলের ক্ষয়ক্ষতি দ্বারা। সুসংবাদ শোনাও তাদেরকে, যারা (এরূপ অবস্থায়) সবরের পরিচয় দেয়।</div>
-    <div class="reference">(আল বাকারা ২:১৫৫)</div>
-  </div>
-  
-  <div class="verse-container">
-    <div class="verse-title">৫। কুফুরীতে মৃত্যুবরণকারীদের পরিণাম</div>
-    <div class="arabic-verse">اِنَّ الَّذِیۡنَ کَفَرُوۡا وَمَاتُوۡا وَہُمۡ کُفَّارٌ اُولٰٓئِکَ عَلَیۡہِمۡ لَعۡنَۃُ اللّٰہِ وَالۡمَلٰٓئِکَۃِ وَالنَّاسِ اَجۡمَعِیۡنَ ۙ</div>
-    <div class="translation">নিশ্চয়ই যারা কুফর অবলম্বন করেছে এবং কাফির অবস্থায়ই মারা গেছে, তাদের প্রতি আল্লাহর, ফিরিশতাদের এবং সমস্ত মানুষের লানত।</div>
-    <div class="reference">(আল বাকারা ২:১৬১)</div>
-  </div>
+  <div class="verse-title">১১। হীনবল ও চিন্তিত না হওয়ার আদেশ</div>
+  <div class="arabic-verse">وَلَا تَہِنُوۡا وَلَا تَحۡزَنُوۡا وَاَنۡتُمُ الۡاَعۡلَوۡنَ اِنۡ کُنۡتُمۡ مُّؤۡمِنِیۡنَ</div>
+  <div class="translation">(হে মুসলিমগণ!) তোমরা হীনবল হয়ো না এবং চিন্তিত হয়ো না। তোমরা প্রকৃত মুমিন হলে তোমরাই বিজয়ী হবে।</div>
+  <div class="reference">[আলে ইমরান ৩:১৩৯]</div>
+</div>
 
-  <div class="zoom-controls">
-    <button class="zoom-btn" id="zoomOut">-</button>
-    <button class="zoom-btn zoom-reset" id="zoomReset">↻</button>
-    <button class="zoom-btn" id="zoomIn">+</button>
-  </div>
+<div class="verse-container">
+  <div class="verse-title">১২। আল্লাহ মুমিনকে নানাভাবে পরীক্ষা করেন</div>
+  <div class="arabic-verse">اَمۡ حَسِبۡتُمۡ اَنۡ تَدۡخُلُوا الۡجَنَّۃَ وَلَمَّا یَعۡلَمِ اللّٰہُ الَّذِیۡنَ جٰہَدُوۡا مِنۡکُمۡ وَیَعۡلَمَ الصّٰبِرِیۡنَ</div>
+  <div class="translation">নাকি তোমরা মনে কর, তোমরা (এমনিতেই) জান্নাতে পৌঁছে যাবে, অথচ আল্লাহ এখনও পর্যন্ত তোমাদের মধ্য হতে সেই সকল লোককে যাচাই করে দেখেননি, যারা জিহাদ করবে এবং তাদেরকেও যাচাই করে দেখেননি, যারা অবিচল থাকবে।</div>
+  <div class="reference">[আলে ইমরান ৩:১৪২]</div>
+</div>
 
-  <script>
-    // Arabic text zoom functionality with localStorage
-    document.addEventListener('DOMContentLoaded', function() {
-      const arabicVerses = document.querySelectorAll('.arabic-verse');
-      const zoomInBtn = document.getElementById('zoomIn');
-      const zoomOutBtn = document.getElementById('zoomOut');
-      const zoomResetBtn = document.getElementById('zoomReset');
-      
-      // Load saved zoom level or set default
-      let currentZoom = localStorage.getItem('arabicTextZoom') || 1;
-      applyZoom(currentZoom);
-      
-      // Zoom in function
-      zoomInBtn.addEventListener('click', function() {
-        currentZoom = Math.min(parseFloat(currentZoom) + 0.1, 2.0);
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Zoom out function
-      zoomOutBtn.addEventListener('click', function() {
-        currentZoom = Math.max(parseFloat(currentZoom) - 0.1, 0.7);
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Reset zoom function
-      zoomResetBtn.addEventListener('click', function() {
-        currentZoom = 1;
-        applyZoom(currentZoom);
-        saveZoom();
-      });
-      
-      // Apply zoom to all Arabic text
-      function applyZoom(zoomLevel) {
-        const baseSize = 15;
-        arabicVerses.forEach(verse => {
-          verse.style.fontSize = (baseSize * zoomLevel) + 'px';
-        });
+<div class="verse-container">
+  <div class="verse-title">১৩। কাফেরদের কথা মান্য করা যাবে না</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوۡۤا اِنۡ تُطِیۡعُوا الَّذِیۡنَ کَفَرُوۡا یَرُدُّوۡکُمۡ عَلٰۤی اَعۡقَابِکُمۡ فَتَنۡقَلِبُوۡا خٰسِرِیۡنَ</div>
+  <div class="translation">হে মুমিনগণ! যারা কুফর অবলম্বন করেছে, তোমরা যদি তাদের কথা মান, তবে তারা তোমাদেরকে তোমাদের পেছন দিকে (কুফরের দিকে) ফিরিয়ে দেবে। ফলে তোমরা উল্টে গিয়ে কঠিনভাবে ক্ষতিগ্রস্ত হবে।</div>
+  <div class="reference">[আলে ইমরান ৩:১৪৯]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৪। আল্লাহর উপর ভরসা করা</div>
+  <div class="arabic-verse">اِنۡ یَّنۡصُرۡکُمُ اللّٰہُ فَلَا غَالِبَ لَکُمۡ ۚ وَاِنۡ یَّخۡذُلۡکُمۡ فَمَنۡ ذَا الَّذِیۡ یَنۡصُرُکُمۡ مِّنۡۢ بَعۡدِہٖ ؕ وَعَلَی اللّٰہِ فَلۡیَتَوَکَّلِ الۡمُؤۡمِنُوۡنَ</div>
+  <div class="translation">আল্লাহ তোমাদেরকে সাহায্য করলে কেউ তোমাদেরকে পরাস্ত করতে পারবে না। আর তিনি যদি তোমাদেরকে অসহায় ছেড়ে দেন, তবে তিনি ছাড়া কে আছে, যে তোমাদেরকে সাহায্য করবে? মুমিনদের উচিত কেবল আল্লাহরই উপর ভরসা করা।</div>
+  <div class="reference">[আলে ইমরান ३:১৬০]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৫। আল্লাহর পথে শহিদরা জীবিত</div>
+  <div class="arabic-verse">وَلَا تَحۡسَبَنَّ الَّذِیۡنَ قُتِلُوۡا فِیۡ سَبِیۡلِ اللّٰہِ اَمۡوَاتًا ؕ  بَلۡ اَحۡیَآءٌ عِنۡدَ رَبِّہِمۡ یُرۡزَقُوۡنَ ۙ</div>
+  <div class="translation">এবং (হে নবী!) যারা আল্লাহর পথে নিহত হয়েছে, তাদেরকে কখনওই মৃত মনে করো না; বরং তারা জীবিত। তাদেরকে তাদের প্রতিপালকের কাছে রিযক দেওয়া হয়।</div>
+  <div class="reference">[আলে ইমরান ৩:১৬৯]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৬। প্রকৃত সফলতা</div>
+  <div class="arabic-verse">کُلُّ نَفۡسٍ ذَآئِقَۃُ الۡمَوۡتِ ؕ وَاِنَّمَا تُوَفَّوۡنَ اُجُوۡرَکُمۡ یَوۡمَ الۡقِیٰمَۃِ ؕ فَمَنۡ زُحۡزِحَ عَنِ النَّارِ وَاُدۡخِلَ الۡجَنَّۃَ فَقَدۡ فَازَ ؕ وَمَا الۡحَیٰوۃُ الدُّنۡیَاۤ اِلَّا مَتَاعُ الۡغُرُوۡرِ</div>
+  <div class="translation">প্রত্যেক প্রাণীকেই মৃত্যুর স্বাদ গ্রহণ করতে হবে এবং তোমাদের সকলকে (তোমাদের কর্মের) পুরোপুরি প্রতিদান কিয়ামতের দিনই দেওয়া হবে। অতঃপর যাকেই জাহান্নাম থেকে দূরে সরিয়ে দেওয়া হবে ও জান্নাতে প্রবেশ করিয়ে দেওয়া হবে, সে-ই প্রকৃত অর্থে সফলকাম হবে। আর (জান্নাতের বিপরীতে) পার্থিব জীবন তো প্রতারণার উপকরণ ছাড়া কিছুই নয়।</div>
+  <div class="reference">[আলে ইমরান ৩:১৮৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৭। বুদ্ধিমানদের জন্য চিন্তার খোরাক</div>
+  <div class="arabic-verse">اِنَّ فِیۡ خَلۡقِ السَّمٰوٰتِ وَالۡاَرۡضِ وَاخۡتِلَافِ الَّیۡلِ وَالنَّہَارِ لَاٰیٰتٍ لِّاُولِی الۡاَلۡبَابِ ۚۙ</div>
+  <div class="translation">নিশ্চয়ই আকাশমণ্ডল ও পৃথিবীর সৃজনে ও রাত-দিনের পালাক্রমে আগমনে বহু নিদর্শন আছে ঐ সকল বুদ্ধিমানদের জন্য।</div>
+  <div class="reference">[আলে ইমরান ৩:১৯০]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৮। অভিযানে সফলতা লাভের শর্ত</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوا اصۡبِرُوۡا وَصَابِرُوۡا وَرَابِطُوۡا ۟  وَاتَّقُوا اللّٰہَ لَعَلَّکُمۡ تُفۡلِحُوۡنَ</div>
+  <div class="translation">হে মুমিনগণ! সবর অবলম্বন কর, মুকাবিলার সময় অবিচলতা প্রদর্শন কর এবং সীমান্ত রক্ষায় স্থিত থাক। আর আল্লাহকে ভয় করে চল, যাতে তোমরা সফলকাম হতে পার।</div>
+  <div class="reference">[আলে ইমরান ৩:২০০]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">১৯। ছোট গুনাহ আল্লাহ ক্ষমা করে দিবেন</div>
+  <div class="arabic-verse">اِنۡ تَجۡتَنِبُوۡا کَبَآئِرَ مَا تُنۡہَوۡنَ عَنۡہُ نُکَفِّرۡ عَنۡکُمۡ سَیِّاٰتِکُمۡ وَنُدۡخِلۡکُمۡ مُّدۡخَلًا کَرِیۡمًا</div>
+  <div class="translation">তোমাদেরকে যেই বড় বড় গুনাহ করতে নিষেধ করা হয়েছে, তোমরা যদি তা পরিহার করে চল, তবে আমি নিজেই তোমাদের ছোট ছোট গুনাহ তোমাদের থেকে মিটিয়ে দেব এবং তোমাদেরকে এক মর্যাদাপূর্ণ স্থানে দাখিল করব।</div>
+  <div class="reference">[আন নিসা ৪:৩১]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২০। কৃপণতার পরিণাম</div>
+  <div class="arabic-verse">الَّذِیۡنَ یَبۡخَلُوۡنَ وَیَاۡمُرُوۡنَ النَّاسَ بِالۡبُخۡلِ وَیَکۡتُمُوۡنَ مَاۤ اٰتٰہُمُ اللّٰہُ مِنۡ فَضۡلِہٖ ؕ  وَاَعۡتَدۡنَا لِلۡکٰفِرِیۡنَ عَذَابًا مُّہِیۡنًا ۚ</div>
+  <div class="translation">যারা নিজেরা কৃপণতা করে এবং মানুষকেও কৃপণতার নির্দেশ দেয়, আর আল্লাহ নিজ অনুগ্রহ হতে তাদের যা দান করেছেন তা গোপন করে। আমি (এরূপ) অকৃতজ্ঞদের জন্য লাঞ্ছনাকর শাস্তি প্রস্তুত করে রেখেছি।</div>
+  <div class="reference">[আন নিসা ४:३७]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২১। সৎ কর্মের প্রতিদান আল্লাহ বাড়িয়ে দেন</div>
+  <div class="arabic-verse">اِنۡ تَجۡتَنِبُوۡا کَبَآئِرَ مَا تُنۡہَوۡنَ عَنۡہُ نُکَفِّرۡ عَنۡکُمۡ سَیِّاٰتِکُمۡ وَنُدۡخِلۡکُمۡ مُّدۡخَلًا کَرِیۡمًا</div>
+  <div class="translation">আল্লাহ (কারও প্রতি) অণু-পরিমাণও জুলুম করেন না। আর যদি কোন সৎকর্ম হয়, তাকে কয়েক গুণ বৃদ্ধি করেন এবং নিজের পক্ষ হতে মহা পুরস্কার দান করেন।</div>
+  <div class="reference">[আন নিসা ৪:৪০]</div>
+</div>
+
+  <div class="verse-container">
+  <div class="verse-title">২১। শিরকের গুনাহ ক্ষমা করা হয় না</div>
+  <div class="arabic-verse">اِنَّ اللّٰہَ لَا یَغۡفِرُ اَنۡ یُّشۡرَکَ بِہٖ وَیَغۡفِرُ مَا دُوۡنَ ذٰلِکَ لِمَنۡ یَّشَآءُ ۚ وَمَنۡ یُّشۡرِکۡ بِاللّٰہِ فَقَدِ افۡتَرٰۤی اِثۡمًا عَظِیۡمًا</div>
+  <div class="translation">নিশ্চয়ই আল্লাহ এ বিষয়কে ক্ষমা করেন না যে, তার সঙ্গে কাউকে শরীক করা হবে। এর চেয়ে নিচের যে-কোন বিষয়ে যাকে ইচ্ছা ক্ষমা করেন। যে ব্যক্তি আল্লাহর সঙ্গে কাউকে শরীক করে, সে এক গুরুতর পাপে লিপ্ত হল।</div>
+  <div class="reference">[আন নিসা ৪:৪৮]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২২। রাসূল (সাঃ) এর আনুগত্য মানে আল্লাহর আনুগত্য</div>
+  <div class="arabic-verse">مَنۡ یُّطِعِ الرَّسُوۡلَ فَقَدۡ اَطَاعَ اللّٰہَ ۚ  وَمَنۡ تَوَلّٰی فَمَاۤ اَرۡسَلۡنٰکَ عَلَیۡہِمۡ حَفِیۡظًا ؕ</div>
+  <div class="translation">যে ব্যক্তি রাসূলের আনুগত্য করে সে আল্লাহরই আনুগত্য করল, আর যারা (তাঁর আনুগত্য হতে) মুখ ফিরিয়ে নেয়, আমি (হে নবী!) তোমাকে তাদের তত্ত্বাবধায়ক বানিয়ে পাঠাইনি (যে, তাদের কাজের দায়-দায়িত্ব তোমার উপর বর্তাবে)।</div>
+  <div class="reference">[আন নিসা ৪:৮০]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৩। কুরআন নিয়ে গবেষণার নির্দেশ</div>
+  <div class="arabic-verse">اَفَلَا یَتَدَبَّرُوۡنَ الۡقُرۡاٰنَ ؕ وَلَوۡ کَانَ مِنۡ عِنۡدِ غَیۡرِ اللّٰہِ لَوَجَدُوۡا فِیۡہِ اخۡتِلَافًا کَثِیۡرًا</div>
+  <div class="translation">তারা কি কুরআন সম্বন্ধে চিন্তা করে না? এটা যদি আল্লাহ ছাড়া অন্য কারও পক্ষ হতে হত তবে এর মধ্য বহু অসঙ্গতি পেত।</div>
+  <div class="reference">[আন নিসা ৪:৮২]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৪। সালামের উত্তর দেয়ার আদব</div>
+  <div class="arabic-verse">وَاِذَا حُیِّیۡتُمۡ بِتَحِیَّۃٍ فَحَیُّوۡا بِاَحۡسَنَ مِنۡہَاۤ اَوۡ رُدُّوۡہَا ؕ اِنَّ اللّٰہَ کَانَ عَلٰی کُلِّ شَیۡءٍ حَسِیۡبًا</div>
+  <div class="translation">যখন কেউ তোমাদেরকে সালাম করে, তখন তোমরা (তাকে) তদপেক্ষাও উত্তমরূপে সালাম দিয়ো কিংবা (অন্ততপক্ষে) সেই শব্দেই তার জবাব দিয়ো। নিশ্চয়ই আল্লাহ সবকিছুর হিসাব রাখেন।</div>
+  <div class="reference">[আন নিসা ৪:৮৬]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৫। আল্লাহ ক্ষমাশীল</div>
+  <div class="arabic-verse">وَمَنۡ یَّعۡمَلۡ سُوۡٓءًا اَوۡ یَظۡلِمۡ نَفۡسَہٗ ثُمَّ یَسۡتَغۡفِرِ اللّٰہَ یَجِدِ اللّٰہَ غَفُوۡرًا رَّحِیۡمًا</div>
+  <div class="translation">যে ব্যক্তি কোনও মন্দ কাজ করে ফেলে বা নিজের প্রতি জুলুম করে বসে, তারপর আল্লাহর কাছে ক্ষমা চায়, সে অবশ্যই আল্লাহকে অতি ক্ষমাশীল, পরম দয়ালুই পবে।</div>
+  <div class="reference">[আন নিসা ৪:১১০]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৬। শিরকের গুনাহ ক্ষমা করা হয় না</div>
+  <div class="arabic-verse">اِنَّ اللّٰہَ لَا یَغۡفِرُ اَنۡ یُّشۡرَکَ بِہٖ وَیَغۡفِرُ مَا دُوۡنَ ذٰلِکَ لِمَنۡ یَّشَآءُ ؕ وَمَنۡ یُّشۡرِکۡ بِاللّٰہِ فَقَدۡ ضَلَّ ضَلٰلًۢا بَعِیۡدًا</div>
+  <div class="translation">নিশ্চয়ই আল্লাহ তাঁর সঙ্গে শরীক করাকে ক্ষমা করেন না। এর নিচের যে-কোনও গুনাহ যার ক্ষেত্রে চান ক্ষমা করে দেন। যে ব্যক্তি আল্লাহর সঙ্গে (কাউকে) শরীক করে, সে (সঠিক পথ থেকে) বহু দূরে সরে যায়।</div>
+  <div class="reference">[আন নিসা ৪:১১৬]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৭। আল্লাহ সব কিছু পরিবেষ্টন করে আছেন</div>
+  <div class="arabic-verse">وَلِلّٰہِ مَا فِی السَّمٰوٰتِ وَمَا فِی الۡاَرۡضِ ؕ  وَکَانَ اللّٰہُ بِکُلِّ شَیۡءٍ مُّحِیۡطًا </div>
+  <div class="translation">আকাশমণ্ডল ও পৃথিবীতে যা-কিছু আছে তা আল্লাহরই এবং আল্লাহ যাবতীয় জিনিসকে (নিজ ক্ষমতা দ্বারা) পরিবেষ্টন করে রেখেছেন।</div>
+  <div class="reference">[আন নিসা ৪:১২৬]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৮। ইনসাফ প্রতিষ্ঠার আদেশ</div>
+  <div class="arabic-verse">یٰۤاَیُّہَا الَّذِیۡنَ اٰمَنُوۡا کُوۡنُوۡا قَوّٰمِیۡنَ بِالۡقِسۡطِ شُہَدَآءَ لِلّٰہِ وَلَوۡ عَلٰۤی اَنۡفُسِکُمۡ اَوِ الۡوَالِ�ِیۡنِ وَالۡاَقۡرَبِیۡنَ</div>
+  <div class="translation">হে মুমিনগণ! তোমরা ইনসাফ প্রতিষ্ঠাকারী হয়ে যাও আল্লাহর জন্য সাক্ষ্যদাতারূপে, যদিও তা তোমাদের নিজেদের বিরুদ্ধে কিংবা পিতা-মাতা ও আত্মীয়-স্বজনের বিরুদ্ধে হয়।</div>
+  <div class="reference">[আন নিসা ৪:১৩৫]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">২৯। আল্লাহ ক্ষমাশীল</div>
+  <div class="arabic-verse">فَمَنۡ تَابَ مِنۡۢ بَعۡدِ ظُلۡمِہٖ وَاَصۡلَحَ فَاِنَّ اللّٰہَ یَتُوۡبُ عَلَیۡہِ ؕ اِنَّ اللّٰہَ غَفُوۡرٌ رَّحِیۡمٌ</div>
+  <div class="translation">অতঃপর যে ব্যক্তি নিজ সীমালংঘনমূলক কার্যক্রম থেকে তাওবা করবে এবং নিজেকে সংশোধন করে নেবে, আল্লাহ তার তাওবা কবুল করবেন। নিশ্চয়ই আল্লাহ অতি ক্ষমাশীল, পরম দয়ালু।</div>
+  <div class="reference">[আল মায়িদাহ ৫:৩৯]</div>
+</div>
+
+<div class="verse-container">
+  <div class="verse-title">৩০। মুমিনের প্রকৃত বন্ধু</div>
+  <div class="arabic-verse">اِنَّمَا وَلِیُّکُمُ اللّٰہُ وَرَسُوۡلُہٗ وَالَّذِیۡنَ اٰمَنُوا الَّذِیۡنَ یُقِیۡمُوۡنَ الصَّلٰوۃَ وَیُؤۡتُوۡنَ الزَّکٰوۃَ وَہُمۡ رٰکِعُوۡنَ</div>
+  <div class="translation">(হে মুসলিমগণ!) তোমাদের বন্ধু তো কেবল আল্লাহ, তাঁর রাসূল ও মুমিনগণ, যারা (আল্লাহর সামনে) বিনীত হয়ে সালাত আদায় করে ও যাকাত দেয়।</div>
+  <div class="reference">[আল মায়িদাহ ৫:৫৫]</div>
+</div>
+
+<!-- আয়াত তালিকা শেষ -->
+<!-- Zoom Controls -->
+<div class="zoom-controls zoom-arabic">
+  <button data-target=".arabic-verse" data-action="in">＋</button>
+  <button data-target=".arabic-verse" data-action="out">－</button>
+</div>
+
+<div class="zoom-controls zoom-bangla">
+  <button data-target=".translation" data-action="in">＋</button>
+  <button data-target=".translation" data-action="out">－</button>
+</div>
+
+<script>
+const buttons = document.querySelectorAll('button[data-target]');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = document.querySelectorAll(btn.getAttribute('data-target'));
+    const action = btn.getAttribute('data-action');
+    target.forEach(el => {
+      // WebView-র জন্য ফন্ট সাইজ ফিক্সড ইনলাইন থেকে নাও
+      let size = parseFloat(el.style.fontSize);
+      if(isNaN(size)) {
+        size = parseFloat(window.getComputedStyle(el).fontSize);
       }
-      
-      // Save zoom level to localStorage
-      function saveZoom() {
-        localStorage.setItem('arabicTextZoom', currentZoom);
-      }
+      if(action === 'in') el.style.fontSize = (size + 2) + 'px';
+      if(action === 'out') el.style.fontSize = (size - 2) + 'px';
     });
-  </script>
-
-  <!-- Firebase SDK -->
+  });
+});
+</script>
+<!-- Firebase SDK -->
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
@@ -281,3 +398,4 @@
 </script>
 </body>
 </html>
+
